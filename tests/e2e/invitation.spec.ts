@@ -3,6 +3,38 @@ import { expect, test } from "@playwright/test";
 import { COUPLE, INDIVIDUAL_INVITE, PARTY_INVITE, SOLO_INVITE } from "./fixtures";
 
 test.describe("personalised invitation", () => {
+  test("the hero photograph is actually painted, not hidden behind the page background", async ({
+    page,
+  }) => {
+    await page.goto(PARTY_INVITE.slug);
+
+    const hero = page.locator("header img").first();
+    await expect(hero).toBeVisible();
+
+    // It must have really decoded, not just be a broken <img> box.
+    await expect
+      .poll(() => hero.evaluate((el: HTMLImageElement) => el.naturalWidth))
+      .toBeGreaterThan(0);
+
+    // `body` carries an opaque background colour. Per the CSS painting order a
+    // block-level background paints AFTER negative z-index descendants, so any
+    // negative z-index on the photo stack silently hides the photos entirely
+    // while every other check still passes. Guard the whole ancestor chain.
+    const negatives = await hero.evaluate((el) => {
+      const found: string[] = [];
+      let node: HTMLElement | null = el as HTMLElement;
+      while (node && node.tagName !== "BODY") {
+        const z = getComputedStyle(node).zIndex;
+        if (z !== "auto" && Number(z) < 0) found.push(`${node.tagName}.${node.className} z=${z}`);
+        node = node.parentElement;
+      }
+      return found;
+    });
+    expect(negatives, `negative z-index would hide the hero photo:\n${negatives.join("\n")}`).toEqual(
+      [],
+    );
+  });
+
   test("a family link greets every member by name", async ({ page }) => {
     await page.goto(PARTY_INVITE.slug);
 

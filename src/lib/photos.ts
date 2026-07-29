@@ -23,8 +23,16 @@ export const PHOTOS: Photo[] = Array.from({ length: PHOTO_COUNT }, (_, i) => ({
   src: `${BASE_PATH}/photos/${String(i + 1).padStart(2, "0")}.jpg`,
 }));
 
-/** Photos that crossfade behind the hero. */
-export const HERO_PHOTOS: Photo[] = [PHOTOS[0], PHOTOS[3], PHOTOS[6], PHOTOS[9]];
+/**
+ * Photos that crossfade behind the hero.
+ *
+ * Chosen for depth and colour rather than in file order: the Eiffel Tower, the
+ * Florence sunset, the Paris love wall and the golden-hour park all hold up
+ * under the dark scrim the hero text needs. The white-background studio portrait
+ * deliberately stays out of the hero - it turns flat grey behind a scrim - and
+ * is used as the share thumbnail and the opening gallery tile instead.
+ */
+export const HERO_PHOTOS: Photo[] = [PHOTOS[9], PHOTOS[3], PHOTOS[1], PHOTOS[6]];
 
 /** Used as the WhatsApp / Instagram share thumbnail for every invite. */
 export const OG_PHOTO = PHOTOS[0].src;

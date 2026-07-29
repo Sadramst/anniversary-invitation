@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-29T08:19:13.017Z",
+  "generatedAt": "2026-07-29T09:19:47.048Z",
   "siteUrl": "https://www.appilico.com.au",
   "basePath": "/inviteaniversery",
   "couple": {
-    "english_names": "REPLACE_ME_1 & REPLACE_ME_2",
-    "farsi_names": "نام_۱ و نام_۲",
-    "initials": "RR",
+    "english_names": "Niloofar & Sadra",
+    "farsi_names": "نیلوفر و صدرا",
+    "initials": "NS",
     "tagline": {
       "en": "Celebrating 10 years of togetherness",
       "fa": "جشن ۱۰ سالگی همراهی و عشق"
@@ -98,11 +98,11 @@
       "type": "party",
       "partyId": "vahid-party",
       "greeting": {
-        "en": "Vahid, Narges, Amirali & Asma",
-        "fa": "وحید، نرگس، امیرعلی و اسما"
+        "en": "Vahid, Narges & Amirali",
+        "fa": "وحید، نرگس و امیرعلی"
       },
       "headEn": "Vahid",
-      "memberCount": 4,
+      "memberCount": 3,
       "needsName": false
     },
     {
@@ -142,14 +142,26 @@
       "needsName": false
     },
     {
-      "slug": "asma-tyebvz",
-      "type": "individual",
-      "partyId": "vahid-party",
+      "slug": "asma-party-zmqsh8",
+      "type": "party",
+      "partyId": "asma-party",
       "greeting": {
         "en": "Asma",
         "fa": "اسما"
       },
-      "headEn": "Vahid",
+      "headEn": "Asma",
+      "memberCount": 1,
+      "needsName": false
+    },
+    {
+      "slug": "asma-zp733b",
+      "type": "individual",
+      "partyId": "asma-party",
+      "greeting": {
+        "en": "Asma",
+        "fa": "اسما"
+      },
+      "headEn": "Asma",
       "memberCount": 1,
       "needsName": false
     },
@@ -159,7 +171,7 @@
       "partyId": "sahar-party",
       "greeting": {
         "en": "Sahar, Sam, Cyrus & Abtin",
-        "fa": "سحر، سام، سیروس و آبتین"
+        "fa": "سحر، سام، سایرس و آبتین"
       },
       "headEn": "Sahar",
       "memberCount": 4,
@@ -195,7 +207,7 @@
       "partyId": "sahar-party",
       "greeting": {
         "en": "Cyrus",
-        "fa": "سیروس"
+        "fa": "سایرس"
       },
       "headEn": "Sahar",
       "memberCount": 1,
@@ -521,7 +533,7 @@
         "en": "Arian, Arvin, Siamak & Roya",
         "fa": "آرین، آروین، سیامک و رویا"
       },
-      "headEn": "Arian",
+      "headEn": "Siamak",
       "memberCount": 4,
       "needsName": false
     },
@@ -533,7 +545,7 @@
         "en": "Arian",
         "fa": "آرین"
       },
-      "headEn": "Arian",
+      "headEn": "Siamak",
       "memberCount": 1,
       "needsName": false
     },
@@ -545,7 +557,7 @@
         "en": "Arvin",
         "fa": "آروین"
       },
-      "headEn": "Arian",
+      "headEn": "Siamak",
       "memberCount": 1,
       "needsName": false
     },
@@ -557,7 +569,7 @@
         "en": "Siamak",
         "fa": "سیامک"
       },
-      "headEn": "Arian",
+      "headEn": "Siamak",
       "memberCount": 1,
       "needsName": false
     },
@@ -569,7 +581,7 @@
         "en": "Roya",
         "fa": "رویا"
       },
-      "headEn": "Arian",
+      "headEn": "Siamak",
       "memberCount": 1,
       "needsName": false
     },
@@ -578,11 +590,11 @@
       "type": "party",
       "partyId": "nima-party",
       "greeting": {
-        "en": "Nima",
-        "fa": "نیما"
+        "en": "Nima & Jana",
+        "fa": "نیما و جانا"
       },
       "headEn": "Nima",
-      "memberCount": 1,
+      "memberCount": 2,
       "needsName": false
     },
     {
@@ -598,16 +610,28 @@
       "needsName": false
     },
     {
+      "slug": "jana-dy3rwz",
+      "type": "individual",
+      "partyId": "nima-party",
+      "greeting": {
+        "en": "Jana",
+        "fa": "جانا"
+      },
+      "headEn": "Nima",
+      "memberCount": 1,
+      "needsName": false
+    },
+    {
       "slug": "amir-party-wsp5uw",
       "type": "party",
       "partyId": "amir-party",
       "greeting": {
-        "en": "Amir & family",
-        "fa": "امیر و خانواده"
+        "en": "Amir & Arya",
+        "fa": "امیر و آریا"
       },
       "headEn": "Amir",
       "memberCount": 2,
-      "needsName": true
+      "needsName": false
     },
     {
       "slug": "amir-stg6ac",
@@ -622,16 +646,16 @@
       "needsName": false
     },
     {
-      "slug": "guest-2-3fdb98",
+      "slug": "arya-2mp2yk",
       "type": "individual",
       "partyId": "amir-party",
       "greeting": {
-        "en": "Friend",
-        "fa": "مهمان عزیز"
+        "en": "Arya",
+        "fa": "آریا"
       },
       "headEn": "Amir",
       "memberCount": 1,
-      "needsName": true
+      "needsName": false
     },
     {
       "slug": "ehsan-party-539ru3",
@@ -674,36 +698,36 @@
       "type": "party",
       "partyId": "saleh-party",
       "greeting": {
-        "en": "Saleh & family",
-        "fa": "صالح و خانواده"
+        "en": "Mohammad & Negin",
+        "fa": "محمد و نگین"
       },
-      "headEn": "Saleh",
+      "headEn": "Mohammad",
       "memberCount": 2,
-      "needsName": true
+      "needsName": false
     },
     {
-      "slug": "saleh-ky4dtv",
+      "slug": "mohammad-q8vg4t",
       "type": "individual",
       "partyId": "saleh-party",
       "greeting": {
-        "en": "Saleh",
-        "fa": "صالح"
+        "en": "Mohammad",
+        "fa": "محمد"
       },
-      "headEn": "Saleh",
+      "headEn": "Mohammad",
       "memberCount": 1,
       "needsName": false
     },
     {
-      "slug": "guest-2-yc23vf",
+      "slug": "negin-7z5wt3",
       "type": "individual",
       "partyId": "saleh-party",
       "greeting": {
-        "en": "Friend",
-        "fa": "مهمان عزیز"
+        "en": "Negin",
+        "fa": "نگین"
       },
-      "headEn": "Saleh",
+      "headEn": "Mohammad",
       "memberCount": 1,
-      "needsName": true
+      "needsName": false
     },
     {
       "slug": "kamyar-party-8drgwv",
@@ -850,66 +874,6 @@
       "needsName": false
     },
     {
-      "slug": "khosravi-party-3pvxj7",
-      "type": "party",
-      "partyId": "khosravi-party",
-      "greeting": {
-        "en": "Khosravi & family",
-        "fa": "خسروی و خانواده"
-      },
-      "headEn": "Khosravi",
-      "memberCount": 4,
-      "needsName": true
-    },
-    {
-      "slug": "khosravi-29ctry",
-      "type": "individual",
-      "partyId": "khosravi-party",
-      "greeting": {
-        "en": "Khosravi",
-        "fa": "خسروی"
-      },
-      "headEn": "Khosravi",
-      "memberCount": 1,
-      "needsName": false
-    },
-    {
-      "slug": "guest-2-ngven7",
-      "type": "individual",
-      "partyId": "khosravi-party",
-      "greeting": {
-        "en": "Friend",
-        "fa": "مهمان عزیز"
-      },
-      "headEn": "Khosravi",
-      "memberCount": 1,
-      "needsName": true
-    },
-    {
-      "slug": "guest-3-gnk8rp",
-      "type": "individual",
-      "partyId": "khosravi-party",
-      "greeting": {
-        "en": "Friend",
-        "fa": "مهمان عزیز"
-      },
-      "headEn": "Khosravi",
-      "memberCount": 1,
-      "needsName": true
-    },
-    {
-      "slug": "guest-4-d854xz",
-      "type": "individual",
-      "partyId": "khosravi-party",
-      "greeting": {
-        "en": "Friend",
-        "fa": "مهمان عزیز"
-      },
-      "headEn": "Khosravi",
-      "memberCount": 1,
-      "needsName": true
-    },
-    {
       "slug": "hooshmand-party-vcww4f",
       "type": "party",
       "partyId": "hooshmand-party",
@@ -942,6 +906,78 @@
         "fa": "رویا"
       },
       "headEn": "Hooshmand",
+      "memberCount": 1,
+      "needsName": false
+    },
+    {
+      "slug": "habib-party-hu2cys",
+      "type": "party",
+      "partyId": "habib-party",
+      "greeting": {
+        "en": "Habib & Ana",
+        "fa": "حبیب و آنا"
+      },
+      "headEn": "Habib",
+      "memberCount": 2,
+      "needsName": false
+    },
+    {
+      "slug": "habib-myqykn",
+      "type": "individual",
+      "partyId": "habib-party",
+      "greeting": {
+        "en": "Habib",
+        "fa": "حبیب"
+      },
+      "headEn": "Habib",
+      "memberCount": 1,
+      "needsName": false
+    },
+    {
+      "slug": "ana-y5878t",
+      "type": "individual",
+      "partyId": "habib-party",
+      "greeting": {
+        "en": "Ana",
+        "fa": "آنا"
+      },
+      "headEn": "Habib",
+      "memberCount": 1,
+      "needsName": false
+    },
+    {
+      "slug": "parham-party-nq9k2f",
+      "type": "party",
+      "partyId": "parham-party",
+      "greeting": {
+        "en": "Parham & Parisa",
+        "fa": "پرهام و پریسا"
+      },
+      "headEn": "Parham",
+      "memberCount": 2,
+      "needsName": false
+    },
+    {
+      "slug": "parham-pn2juf",
+      "type": "individual",
+      "partyId": "parham-party",
+      "greeting": {
+        "en": "Parham",
+        "fa": "پرهام"
+      },
+      "headEn": "Parham",
+      "memberCount": 1,
+      "needsName": false
+    },
+    {
+      "slug": "parisa-qztrtk",
+      "type": "individual",
+      "partyId": "parham-party",
+      "greeting": {
+        "en": "Parisa",
+        "fa": "پریسا"
+      },
+      "headEn": "Parham",
       "memberCount": 1,
       "needsName": false
     }

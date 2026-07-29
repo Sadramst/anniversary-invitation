@@ -46,61 +46,98 @@ export function Monogram({ initials, lang, className, variant = "hero" }: Monogr
         </linearGradient>
       </defs>
 
-      {/* Double ring */}
-      <circle cx="120" cy="120" r="112" fill="none" stroke="url(#mono-gold)" strokeWidth="1.1" opacity="0.75" />
-      <circle cx="120" cy="120" r="104" fill="none" stroke="url(#mono-gold)" strokeWidth="2.2" />
+      {/* Outer hairline */}
+      <circle cx="120" cy="120" r="113" fill="none" stroke="url(#mono-gold)" strokeWidth="0.8" opacity="0.45" />
 
-      {/* Ring flourishes at the four cardinal points */}
-      {[0, 90, 180, 270].map((deg) => (
-        <g key={deg} transform={`rotate(${deg} 120 120)`}>
-          <circle cx="120" cy="8" r="3.4" fill="url(#mono-gold)" />
-        </g>
-      ))}
+      {/* Main ring, broken at the top to seat the numeral */}
+      <path
+        d="M 164.3 29.2 A 101 101 0 1 1 75.7 29.2"
+        fill="none"
+        stroke="url(#mono-gold)"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
 
-      {/* The Roman numeral X for ten, sitting behind the initials */}
+      {/* Roman numeral ten, sitting in the break */}
       <text
         x="120"
-        y="132"
+        y="30"
         textAnchor="middle"
         dominantBaseline="middle"
-        fill="url(#mono-rose)"
-        opacity="0.34"
-        style={{ fontFamily: "var(--font-dm-serif), Georgia, serif", fontSize: "138px" }}
+        fill="url(#mono-gold)"
+        style={{ fontFamily: "var(--font-dm-serif), Georgia, serif", fontSize: "32px", letterSpacing: "1px" }}
       >
         X
       </text>
 
-      {/* Initials interlaced across the X */}
-      <text
-        x={second ? "78" : "120"}
-        y="118"
-        textAnchor="middle"
-        dominantBaseline="middle"
-        fill="url(#mono-gold)"
-        style={{ fontFamily: "var(--font-dm-serif), Georgia, serif", fontSize: "76px" }}
-      >
-        {first}
-      </text>
+      {/* Initials, set side by side so both stay perfectly legible */}
       {second ? (
+        <>
+          <text
+            x="82"
+            y="122"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fill="url(#mono-gold)"
+            style={{ fontFamily: "var(--font-dm-serif), Georgia, serif", fontSize: "66px" }}
+          >
+            {first}
+          </text>
+          <text
+            x="120"
+            y="126"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fill="url(#mono-rose)"
+            style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "40px",
+              fontStyle: "italic",
+            }}
+          >
+            &amp;
+          </text>
+          <text
+            x="158"
+            y="122"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fill="url(#mono-gold)"
+            style={{ fontFamily: "var(--font-dm-serif), Georgia, serif", fontSize: "66px" }}
+          >
+            {second}
+          </text>
+        </>
+      ) : (
         <text
-          x="162"
-          y="140"
+          x="120"
+          y="122"
           textAnchor="middle"
           dominantBaseline="middle"
           fill="url(#mono-gold)"
           style={{ fontFamily: "var(--font-dm-serif), Georgia, serif", fontSize: "76px" }}
         >
-          {second}
+          {first}
         </text>
-      ) : null}
+      )}
 
       {/* Hairline separator + caption */}
       {!compact && (
         <>
-          <line x1="74" y1="176" x2="166" y2="176" stroke="url(#mono-gold)" strokeWidth="0.9" opacity="0.8" />
+          <line x1="84" y1="158" x2="112" y2="158" stroke="url(#mono-gold)" strokeWidth="0.9" opacity="0.85" />
+          <rect
+            x="116.5"
+            y="154.5"
+            width="7"
+            height="7"
+            transform="rotate(45 120 158)"
+            fill="url(#mono-gold)"
+            opacity="0.9"
+          />
+          <line x1="128" y1="158" x2="156" y2="158" stroke="url(#mono-gold)" strokeWidth="0.9" opacity="0.85" />
           <text
             x="120"
-            y="196"
+            y="182"
             textAnchor="middle"
             fill="#e6cf9d"
             style={{
@@ -108,7 +145,7 @@ export function Monogram({ initials, lang, className, variant = "hero" }: Monogr
                 lang === "fa"
                   ? "var(--font-vazirmatn), system-ui, sans-serif"
                   : "var(--font-cormorant), Georgia, serif",
-              fontSize: lang === "fa" ? "17px" : "19px",
+              fontSize: lang === "fa" ? "16px" : "18px",
               letterSpacing: lang === "fa" ? "0" : "7px",
             }}
           >
@@ -116,6 +153,17 @@ export function Monogram({ initials, lang, className, variant = "hero" }: Monogr
           </text>
         </>
       )}
+
+      {/* Small counterweight at the foot of the ring, balancing the numeral */}
+      <rect
+        x="116"
+        y="217"
+        width="8"
+        height="8"
+        transform="rotate(45 120 221)"
+        fill="url(#mono-gold)"
+        opacity="0.85"
+      />
     </svg>
   );
 }

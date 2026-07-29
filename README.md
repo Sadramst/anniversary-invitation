@@ -34,30 +34,25 @@ Farsi names display correctly). One row per link:
 | `Status` | `ready`, or `NEEDS-NAME` if a guest's name is still missing |
 | `URL` | The link to paste into WhatsApp |
 
-Currently: **22 family links + 54 individual links = 76 links** (68 ready,
-8 flagged `NEEDS-NAME`).
+Currently: **24 family links + 55 individual links = 79 links**, all `ready`.
 
 Send the *family* link to a group chat, or the *individual* links to each person
 directly — whichever you prefer, both work.
 
 ---
 
-## Still to do before sending invitations
+## Changing the invitation later
 
-These are the only placeholders left. Everything else is finished.
+Everything is finished — names, photos and guest list are all real. To change
+something:
 
-1. **Couple names** — in `data/guests.data.json`, replace:
-   - `couple.english_names`: `"REPLACE_ME_1 & REPLACE_ME_2"`
-   - `couple.farsi_names`: `"نام_۱ و نام_۲"`
-   - `couple.initials`: `"RR"` → your two initials (used in the monogram)
-2. **Photos** — drop your 10 photos into `public/photos/` named `01.jpg` …
-   `10.jpg`, overwriting the placeholders. Any resolution; landscape works best.
-   Photo `01.jpg` is also the WhatsApp share thumbnail.
-3. **5 missing guest names** — filter `links-export.csv` on `Status = NEEDS-NAME`
-   (8 rows: 5 people across `amir-party`, `saleh-party` and `khosravi-party`,
-   plus the 3 family links that include them). Fill in `english_name` in the
-   JSON, or leave them — the page falls back to a warm generic greeting
-   ("Friend" / "مهمان عزیز", and "Amir & family" / "امیر و خانواده").
+- **Guest list** — edit `data/guests.data.json`, then `npm run build`. Read
+  "Guest links are permanent" below first.
+- **Couple names / venue / date** — the `couple`, `venue` and `event` objects at
+  the top of the same file.
+- **Photos** — replace files in `public/photos/` (`01.jpg` … `10.jpg`).
+  `01.jpg` is the WhatsApp share thumbnail. The hero picks a rotating set from
+  `src/lib/photos.ts`.
 
 ---
 
@@ -89,7 +84,7 @@ guessed or enumerated.
 - No analytics, no cookies, no `localStorage`, no third-party requests.
 
 > **Keep this repository private.** The slug salt is committed, so a public repo
-> would let anyone compute all 76 guest links.
+> would let anyone compute all 79 guest links.
 
 ---
 

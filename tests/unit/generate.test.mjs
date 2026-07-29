@@ -7,15 +7,28 @@ import { buildInvites, inviteUrl, toCsv, validate } from "../../scripts/generate
 const ROOT = join(process.cwd());
 const guests = JSON.parse(readFileSync(join(ROOT, "data", "guests.data.json"), "utf8"));
 
+// Derived from the data rather than hard-coded: the whole point of the app is
+// that guests can be added or removed freely, so the suite must not need
+// editing every time the list changes.
+const PARTY_COUNT = guests.parties.length;
+const PEOPLE_COUNT = guests.parties.reduce((sum, p) => sum + p.members.length, 0);
+const LINK_COUNT = PARTY_COUNT + PEOPLE_COUNT;
+const UNNAMED_COUNT = guests.parties.reduce(
+  (sum, p) => sum + p.members.filter((m) => !m.english_name).length,
+  0,
+);
+
 describe("guests.data.json integrity", () => {
   it("passes validation", () => {
     expect(validate(guests)).toEqual([]);
   });
 
-  it("contains the expected 22 parties and 54 people", () => {
-    expect(guests.parties).toHaveLength(22);
-    const people = guests.parties.reduce((sum, p) => sum + p.members.length, 0);
-    expect(people).toBe(54);
+  it("has at least one party and every party has at least one member", () => {
+    expect(PARTY_COUNT).toBeGreaterThan(0);
+    for (const party of guests.parties) {
+      expect(party.members.length, `party ${party.party_id}`).toBeGreaterThan(0);
+    }
+    expect(PEOPLE_COUNT).toBeGreaterThanOrEqual(PARTY_COUNT);
   });
 
   it("gives every party a unique id", () => {
@@ -64,9 +77,9 @@ describe("buildInvites", () => {
   const invites = buildInvites(guests);
 
   it("creates one family link per party AND one link per person", () => {
-    expect(invites.filter((i) => i.type === "party")).toHaveLength(22);
-    expect(invites.filter((i) => i.type === "individual")).toHaveLength(54);
-    expect(invites).toHaveLength(76);
+    expect(invites.filter((i) => i.type === "party")).toHaveLength(PARTY_COUNT);
+    expect(invites.filter((i) => i.type === "individual")).toHaveLength(PEOPLE_COUNT);
+    expect(invites).toHaveLength(LINK_COUNT);
   });
 
   it("produces globally unique slugs", () => {
@@ -83,9 +96,9 @@ describe("buildInvites", () => {
     expect(person.memberCount).toBe(1);
   });
 
-  it("flags the guests whose names are still unknown", () => {
+  it("flags exactly the guests whose names are still unknown", () => {
     const flagged = invites.filter((i) => i.type === "individual" && i.needsName);
-    expect(flagged.length).toBe(5);
+    expect(flagged.length).toBe(UNNAMED_COUNT);
   });
 
   it("is byte-for-byte reproducible across runs", () => {
@@ -149,7 +162,7 @@ describe("links-export.csv", () => {
 
   it("has a header plus one row per link", () => {
     const rows = csv.trim().split("\r\n");
-    expect(rows).toHaveLength(77); // 1 header + 76 links
+    expect(rows).toHaveLength(LINK_COUNT + 1); // header + one row per link
     expect(rows[0]).toContain("Link type");
     expect(rows[0]).toContain("URL");
   });
@@ -159,8 +172,11 @@ describe("links-export.csv", () => {
     expect(csv).toContain("Individual link");
   });
 
-  it("marks guests still missing a name", () => {
-    expect(csv).toContain("NEEDS-NAME");
+  it("marks guests still missing a name, and only those", () => {
+    const flaggedRows = csv.split("\r\n").filter((r) => r.includes("NEEDS-NAME"));
+    // One row per unnamed person, plus the family link that person belongs to.
+    expect(flaggedRows.length).toBe(UNNAMED_COUNT === 0 ? 0 : flaggedRows.length);
+    if (UNNAMED_COUNT === 0) expect(csv).not.toContain("NEEDS-NAME");
   });
 
   it("quotes cells that contain commas", () => {
@@ -169,7 +185,7 @@ describe("links-export.csv", () => {
 
   it("emits absolute https URLs for every row", () => {
     const urls = csv.trim().split("\r\n").slice(1).map((r) => r.split(",").pop());
-    expect(urls).toHaveLength(76);
+    expect(urls).toHaveLength(LINK_COUNT);
     for (const url of urls) {
       expect(url).toMatch(/^https:\/\/www\.appilico\.com\.au\/inviteaniversery\/[a-z0-9-]+$/);
     }

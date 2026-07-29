@@ -21,9 +21,9 @@
   ],
 
   "couple": {
-    "english_names": "REPLACE_ME_1 & REPLACE_ME_2",
-    "farsi_names": "نام_۱ و نام_۲",
-    "initials": "RR",
+    "english_names": "Niloofar & Sadra",
+    "farsi_names": "نیلوفر و صدرا",
+    "initials": "NS",
     "tagline": {
       "en": "Celebrating 10 years of togetherness",
       "fa": "جشن ۱۰ سالگی همراهی و عشق"
@@ -65,8 +65,13 @@
       "members": [
         { "english_name": "Vahid", "farsi_name": "وحید", "is_head": true },
         { "english_name": "Narges", "farsi_name": "نرگس" },
-        { "english_name": "Amirali", "farsi_name": "امیرعلی" },
-        { "english_name": "Asma", "farsi_name": "اسما" }
+        { "english_name": "Amirali", "farsi_name": "امیرعلی" }
+      ]
+    },
+    {
+      "party_id": "asma-party",
+      "members": [
+        { "english_name": "Asma", "farsi_name": "اسما", "is_head": true }
       ]
     },
     {
@@ -74,7 +79,7 @@
       "members": [
         { "english_name": "Sahar", "farsi_name": "سحر", "is_head": true },
         { "english_name": "Sam", "farsi_name": "سام" },
-        { "english_name": "Cyrus", "farsi_name": "سیروس" },
+        { "english_name": "Cyrus", "farsi_name": "سایرس" },
         { "english_name": "Abtin", "farsi_name": "آبتین" }
       ]
     },
@@ -134,21 +139,24 @@
     {
       "party_id": "arian-party",
       "members": [
-        { "english_name": "Arian", "farsi_name": "آرین", "is_head": true },
+        { "english_name": "Arian", "farsi_name": "آرین" },
         { "english_name": "Arvin", "farsi_name": "آروین" },
-        { "english_name": "Siamak", "farsi_name": "سیامک" },
+        { "english_name": "Siamak", "farsi_name": "سیامک", "is_head": true },
         { "english_name": "Roya", "farsi_name": "رویا" }
       ]
     },
     {
       "party_id": "nima-party",
-      "members": [{ "english_name": "Nima", "farsi_name": "نیما", "is_head": true }]
+      "members": [
+        { "english_name": "Nima", "farsi_name": "نیما", "is_head": true },
+        { "english_name": "Jana", "farsi_name": "جانا" }
+      ]
     },
     {
       "party_id": "amir-party",
       "members": [
         { "english_name": "Amir", "farsi_name": "امیر", "is_head": true },
-        { "english_name": null, "farsi_name": null }
+        { "english_name": "Arya", "farsi_name": "آریا" }
       ]
     },
     {
@@ -161,8 +169,8 @@
     {
       "party_id": "saleh-party",
       "members": [
-        { "english_name": "Saleh", "farsi_name": "صالح", "is_head": true },
-        { "english_name": null, "farsi_name": null }
+        { "english_name": "Mohammad", "farsi_name": "محمد", "is_head": true },
+        { "english_name": "Negin", "farsi_name": "نگین" }
       ]
     },
     {
@@ -194,19 +202,24 @@
       ]
     },
     {
-      "party_id": "khosravi-party",
-      "members": [
-        { "english_name": "Khosravi", "farsi_name": "خسروی", "is_head": true },
-        { "english_name": null, "farsi_name": null },
-        { "english_name": null, "farsi_name": null },
-        { "english_name": null, "farsi_name": null }
-      ]
-    },
-    {
       "party_id": "hooshmand-party",
       "members": [
         { "english_name": "Hooshmand", "farsi_name": "هوشمند", "is_head": true },
         { "english_name": "Roya", "farsi_name": "رویا" }
+      ]
+    },
+    {
+      "party_id": "habib-party",
+      "members": [
+        { "english_name": "Habib", "farsi_name": "حبیب", "is_head": true },
+        { "english_name": "Ana", "farsi_name": "آنا" }
+      ]
+    },
+    {
+      "party_id": "parham-party",
+      "members": [
+        { "english_name": "Parham", "farsi_name": "پرهام", "is_head": true },
+        { "english_name": "Parisa", "farsi_name": "پریسا" }
       ]
     }
   ]
