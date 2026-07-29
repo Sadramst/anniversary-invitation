@@ -1,6 +1,13 @@
 export interface Photo {
   id: number;
   src: string;
+  /**
+   * CSS `object-position` for the hero. A phone viewport is far taller than
+   * these landscape photos, so `object-cover` crops the sides hard - and the
+   * couple is off-centre in several of them. Without a per-photo focal point
+   * the default 50% centre slices their faces off at the edge of the screen.
+   */
+  focus?: string;
 }
 
 export const PHOTO_COUNT = 10;
@@ -32,7 +39,12 @@ export const PHOTOS: Photo[] = Array.from({ length: PHOTO_COUNT }, (_, i) => ({
  * deliberately stays out of the hero - it turns flat grey behind a scrim - and
  * is used as the share thumbnail and the opening gallery tile instead.
  */
-export const HERO_PHOTOS: Photo[] = [PHOTOS[9], PHOTOS[3], PHOTOS[1], PHOTOS[6]];
+export const HERO_PHOTOS: Photo[] = [
+  { ...PHOTOS[9], focus: "68% 40%" }, // Eiffel Tower - couple stands well right of frame
+  { ...PHOTOS[3], focus: "50% 38%" }, // Florence sunset
+  { ...PHOTOS[1], focus: "50% 42%" }, // Paris love wall
+  { ...PHOTOS[6], focus: "50% 40%" }, // golden-hour park
+];
 
 /** Used as the WhatsApp / Instagram share thumbnail for every invite. */
 export const OG_PHOTO = PHOTOS[0].src;

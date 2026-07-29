@@ -47,9 +47,8 @@ export function Hero({ invite, couple }: HeroProps) {
             priority={i === 0}
             quality={85}
             sizes="100vw"
-            // Biased slightly above centre so the couple stays in frame when a
-            // wide desktop viewport crops the top and bottom off a tall photo.
-            className={`animate-slow-zoom object-cover object-[50%_42%] transition-opacity duration-[2000ms] ease-in-out ${
+            style={{ objectPosition: photo.focus ?? "50% 42%" }}
+            className={`animate-slow-zoom object-cover transition-opacity duration-[2000ms] ease-in-out ${
               i === active ? "opacity-100" : "opacity-0"
             }`}
           />
