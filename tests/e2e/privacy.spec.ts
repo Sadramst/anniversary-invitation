@@ -94,7 +94,7 @@ test.describe("share preview", () => {
     await page.goto(PARTY_INVITE.slug);
     await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
       "content",
-      `https://www.appilico.com.au/inviteaniversery/${PARTY_INVITE.slug}`,
+      `https://www.appilico.com.au/anniversary/${PARTY_INVITE.slug}`,
     );
   });
 

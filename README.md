@@ -4,7 +4,7 @@ A private, bilingual (فارسی / English) digital invitation. Every guest gets
 own link that greets them by name. No RSVP, no forms, no tracking — just a
 beautiful page to open on a phone.
 
-**Live at:** `https://www.appilico.com.au/inviteaniversery/<guest-slug>`
+**Live at:** `https://www.appilico.com.au/anniversary/<guest-slug>`
 
 ---
 
@@ -92,7 +92,7 @@ guessed or enumerated.
 
 ```powershell
 npm install
-npm run dev          # http://localhost:3000/inviteaniversery/armita-party-g9qtmt
+npm run dev          # http://localhost:3000/anniversary/armita-party-g9qtmt
 ```
 
 | Command | What it does |
@@ -108,7 +108,7 @@ npm run dev          # http://localhost:3000/inviteaniversery/armita-party-g9qtm
 
 ## Deployment
 
-Deployed as its own Vercel project. `basePath` is `/inviteaniversery`, so the app
+Deployed as its own Vercel project. `basePath` is `/anniversary`, so the app
 serves itself under that path and nothing else on the domain is affected.
 
 **To put it on `www.appilico.com.au`,** add this rewrite to the main
@@ -118,26 +118,24 @@ serves itself under that path and nothing else on the domain is affected.
 async rewrites() {
   return [
     {
-      source: "/inviteaniversery/:path*",
-      destination: "https://<this-project>.vercel.app/inviteaniversery/:path*",
+      source: "/anniversary/:path*",
+      destination: "https://anniversary-two-vert.vercel.app/anniversary/:path*",
     },
   ];
 }
 ```
 
+A *rewrite* (not a redirect) keeps the guest's address bar on
+`www.appilico.com.au`, and makes the `og:image` resolve so WhatsApp shows the
+share thumbnail.
+
 ### Changing the URL path
 
-`/inviteaniversery` is a misspelling of "anniversary". If you'd rather use
-something cleaner — `/anniversary`, or shorter and nicer in a WhatsApp message,
-`/invite` — it's a **one-line change** and costs nothing right now:
-
-1. Set `NEXT_PUBLIC_BASE_PATH=/invite` in the Vercel project's environment variables.
-2. Redeploy. Every link in `links-export.csv` regenerates with the new path.
+Set `NEXT_PUBLIC_BASE_PATH` in the Vercel project's environment variables and
+redeploy — every link in `links-export.csv` regenerates with the new path. The
+per-guest slugs themselves are unaffected, only the prefix moves.
 
 Do this **before** sending any invitations — afterwards the old links would break.
-
-> Recommendation: `/invite` reads best and is easiest to type; `/anniversary` is
-> the most descriptive. Both look more polished than the current misspelling.
 
 ---
 

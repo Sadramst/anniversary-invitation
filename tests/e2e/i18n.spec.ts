@@ -115,16 +115,22 @@ test.describe("language and direction", () => {
   });
 
   test("fonts differ per language", async ({ page }) => {
+    const greetingFont = () =>
+      page.getByTestId("guest-greeting").evaluate((el) => getComputedStyle(el).fontFamily);
+
     await page.goto(PARTY_INVITE.slug);
-    const fontFa = await page
-      .getByTestId("guest-greeting")
-      .evaluate((el) => getComputedStyle(el).fontFamily);
+    // The language stack is applied from `html[lang]`, and the webfonts load
+    // asynchronously - read the computed family only once both have settled,
+    // otherwise a slow font swap makes both languages briefly report the same
+    // fallback family.
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+    await page.evaluate(() => document.fonts.ready);
+    const fontFa = await greetingFont();
 
     await page.getByTestId("language-toggle").click();
     await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
-    const fontEn = await page
-      .getByTestId("guest-greeting")
-      .evaluate((el) => getComputedStyle(el).fontFamily);
+    await page.evaluate(() => document.fonts.ready);
+    const fontEn = await greetingFont();
 
     expect(fontFa).not.toBe(fontEn);
     expect(fontFa).toMatch(/Vazirmatn/i);

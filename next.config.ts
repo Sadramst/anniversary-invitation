@@ -2,12 +2,14 @@ import type { NextConfig } from "next";
 
 /**
  * The invitation is mounted as a sub-path of the main Appilico site:
- *   https://www.appilico.com.au/inviteaniversery/<slug>
+ *   https://www.appilico.com.au/anniversary/<slug>
  *
  * Change ONE value here (or set NEXT_PUBLIC_BASE_PATH) to move it,
- * e.g. "/anniversary" or "" to serve it from the domain root.
+ * e.g. "/invite" or "" to serve it from the domain root. Note the same default
+ * is repeated in scripts/generate-invites.mjs and src/lib/photos.ts - all three
+ * must agree.
  */
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/inviteaniversery";
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/anniversary";
 
 const nextConfig: NextConfig = {
   basePath: BASE_PATH === "" ? undefined : BASE_PATH,

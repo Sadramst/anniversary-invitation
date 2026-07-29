@@ -18,7 +18,7 @@ export const PHOTO_COUNT = 10;
  * src or every optimized request 404s. Including it here keeps full AVIF/WebP
  * optimization working, which matters on mobile data.
  */
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/inviteaniversery";
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/anniversary";
 
 /**
  * The 10 couple photos.

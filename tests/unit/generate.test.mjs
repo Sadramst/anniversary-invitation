@@ -147,14 +147,14 @@ describe("buildInvites", () => {
 
 describe("inviteUrl", () => {
   it("builds the public URL under the configured base path", () => {
-    expect(inviteUrl("armita-party-abc123", "https://www.appilico.com.au", "/inviteaniversery")).toBe(
-      "https://www.appilico.com.au/inviteaniversery/armita-party-abc123",
+    expect(inviteUrl("armita-party-abc123", "https://www.appilico.com.au", "/anniversary")).toBe(
+      "https://www.appilico.com.au/anniversary/armita-party-abc123",
     );
   });
 });
 
 describe("links-export.csv", () => {
-  const csv = toCsv(buildInvites(guests), "https://www.appilico.com.au", "/inviteaniversery");
+  const csv = toCsv(buildInvites(guests), "https://www.appilico.com.au", "/anniversary");
 
   it("starts with a BOM so Excel renders the Farsi column", () => {
     expect(csv.startsWith("\uFEFF")).toBe(true);
@@ -187,7 +187,7 @@ describe("links-export.csv", () => {
     const urls = csv.trim().split("\r\n").slice(1).map((r) => r.split(",").pop());
     expect(urls).toHaveLength(LINK_COUNT);
     for (const url of urls) {
-      expect(url).toMatch(/^https:\/\/www\.appilico\.com\.au\/inviteaniversery\/[a-z0-9-]+$/);
+      expect(url).toMatch(/^https:\/\/www\.appilico\.com\.au\/anniversary\/[a-z0-9-]+$/);
     }
   });
 });

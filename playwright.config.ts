@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const PORT = 3100;
-const BASE_PATH = "/inviteaniversery";
+const BASE_PATH = "/anniversary";
 
 /** Real WhatsApp Android in-app browser UA string. */
 const WHATSAPP_UA =

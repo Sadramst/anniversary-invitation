@@ -16,7 +16,7 @@ import { individualGreeting, partyGreeting, faName } from "./lib/greetings.mjs";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SALT = process.env.INVITE_SLUG_SALT || DEFAULT_SALT;
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.appilico.com.au").replace(/\/+$/, "");
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/inviteaniversery";
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/anniversary";
 
 /* ------------------------------------------------------------------ validate */
 
