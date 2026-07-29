@@ -27,16 +27,18 @@ Farsi names display correctly). One row per link:
 
 | Column | Meaning |
 | --- | --- |
-| `type` | `party` (whole family, one link) or `individual` (one person) |
-| `party_id` | Which family group |
-| `greeting_en` / `greeting_fa` | Exactly how the page will greet them |
-| `url` | The link to paste into WhatsApp |
-| `note` | `NEEDS-NAME` if a guest's name is still missing |
+| `Name (EN)` / `Name (FA)` | Exactly how the page will greet them |
+| `Party` | Which family group |
+| `Link type` | `Family link` (whole group, one link) or `Individual link` |
+| `People` | How many guests that link covers |
+| `Status` | `ready`, or `NEEDS-NAME` if a guest's name is still missing |
+| `URL` | The link to paste into WhatsApp |
 
-Currently: **22 family links + 54 individual links = 76 pages.**
+Currently: **22 family links + 54 individual links = 76 links** (68 ready,
+8 flagged `NEEDS-NAME`).
 
-Send the *party* link to a family group chat, or the *individual* links to each
-person directly — whichever you prefer, both work.
+Send the *family* link to a group chat, or the *individual* links to each person
+directly — whichever you prefer, both work.
 
 ---
 
@@ -51,9 +53,11 @@ These are the only placeholders left. Everything else is finished.
 2. **Photos** — drop your 10 photos into `public/photos/` named `01.jpg` …
    `10.jpg`, overwriting the placeholders. Any resolution; landscape works best.
    Photo `01.jpg` is also the WhatsApp share thumbnail.
-3. **5 missing guest names** — search `links-export.csv` for `NEEDS-NAME`
-   (in `amir-party`, `saleh-party`, and `khosravi-party`). Fill in `english_name`
-   in the JSON, or leave them — the page falls back to a warm generic greeting.
+3. **5 missing guest names** — filter `links-export.csv` on `Status = NEEDS-NAME`
+   (8 rows: 5 people across `amir-party`, `saleh-party` and `khosravi-party`,
+   plus the 3 family links that include them). Fill in `english_name` in the
+   JSON, or leave them — the page falls back to a warm generic greeting
+   ("Friend" / "مهمان عزیز", and "Amir & family" / "امیر و خانواده").
 
 ---
 
