@@ -1,0 +1,213 @@
+{
+  "_readme": [
+    "THIS IS THE ONLY FILE YOU NEED TO EDIT.",
+    "",
+    "To add a guest      -> add an object to a party's `members` array.",
+    "To remove a guest   -> delete that object.",
+    "To add a new family -> add a new object to `parties` with a unique `party_id`.",
+    "",
+    "Then run:  npm run generate-invites   (or just push - the build does it automatically)",
+    "",
+    "RULES:",
+    "  * `party_id` must be unique and must NEVER be changed once links are sent,",
+    "     because the slug is derived from it. Changing it changes that family's link.",
+    "  * `english_name` must NEVER be changed once links are sent, for the same reason.",
+    "  * `farsi_name` CAN be edited freely at any time - it does not affect the link.",
+    "  * Set `english_name` to null for a person whose name you don't know yet.",
+    "     They still get a working link, flagged as NEEDS-NAME in links-export.csv.",
+    "  * Exactly one member per party should have \"is_head\": true.",
+    "",
+    "Adding/removing guests NEVER changes anybody else's existing link."
+  ],
+
+  "couple": {
+    "english_names": "REPLACE_ME_1 & REPLACE_ME_2",
+    "farsi_names": "نام_۱ و نام_۲",
+    "initials": "RR",
+    "tagline": {
+      "en": "Celebrating 10 years of togetherness",
+      "fa": "جشن ۱۰ سالگی همراهی و عشق"
+    }
+  },
+
+  "venue": {
+    "name": { "en": "Sorrento Community Hall", "fa": "سالن اجتماعات سورنتو" },
+    "address": {
+      "street": "22 Padbury Circle",
+      "suburb": "Sorrento",
+      "state": "WA",
+      "postcode": "6020",
+      "country": "Australia",
+      "full_address_en": "22 Padbury Circle, Sorrento WA 6020, Australia",
+      "full_address_fa": "استرالیا، استرالیای غربی، سورنتو، خیابان پدبری ۲۲، کد پستی ۶۰۲۰"
+    }
+  },
+
+  "event": {
+    "date_iso": "2026-09-05",
+    "start_time": "17:00",
+    "end_time": "00:00",
+    "timezone": "Australia/Perth"
+  },
+
+  "parties": [
+    {
+      "party_id": "armita-party",
+      "members": [
+        { "english_name": "Armita", "farsi_name": "آرمیتا", "is_head": true },
+        { "english_name": "Hesam", "farsi_name": "حسام" },
+        { "english_name": "Negar", "farsi_name": "نگار" },
+        { "english_name": "Samyar", "farsi_name": "سامیار" }
+      ]
+    },
+    {
+      "party_id": "vahid-party",
+      "members": [
+        { "english_name": "Vahid", "farsi_name": "وحید", "is_head": true },
+        { "english_name": "Narges", "farsi_name": "نرگس" },
+        { "english_name": "Amirali", "farsi_name": "امیرعلی" },
+        { "english_name": "Asma", "farsi_name": "اسما" }
+      ]
+    },
+    {
+      "party_id": "sahar-party",
+      "members": [
+        { "english_name": "Sahar", "farsi_name": "سحر", "is_head": true },
+        { "english_name": "Sam", "farsi_name": "سام" },
+        { "english_name": "Cyrus", "farsi_name": "سیروس" },
+        { "english_name": "Abtin", "farsi_name": "آبتین" }
+      ]
+    },
+    {
+      "party_id": "pooriya-party",
+      "members": [
+        { "english_name": "Pooriya", "farsi_name": "پوریا", "is_head": true },
+        { "english_name": "Matineh", "farsi_name": "متینه" }
+      ]
+    },
+    {
+      "party_id": "reza-party",
+      "members": [
+        { "english_name": "Reza", "farsi_name": "رضا", "is_head": true },
+        { "english_name": "Sara", "farsi_name": "سارا" }
+      ]
+    },
+    {
+      "party_id": "mahdyar-party",
+      "members": [
+        { "english_name": "Mahdyar", "farsi_name": "مهدیار", "is_head": true },
+        { "english_name": "Niloofar", "farsi_name": "نیلوفر" }
+      ]
+    },
+    {
+      "party_id": "mehdi-party",
+      "members": [
+        { "english_name": "Mehdi", "farsi_name": "مهدی", "is_head": true },
+        { "english_name": "Zohre", "farsi_name": "زهره" },
+        { "english_name": "Radin", "farsi_name": "رادین" }
+      ]
+    },
+    {
+      "party_id": "hamid-party",
+      "members": [{ "english_name": "Hamid", "farsi_name": "حمید", "is_head": true }]
+    },
+    {
+      "party_id": "meysam-party",
+      "members": [
+        { "english_name": "Meysam", "farsi_name": "میثم", "is_head": true },
+        { "english_name": "Maryam", "farsi_name": "مریم" }
+      ]
+    },
+    {
+      "party_id": "malihe-party",
+      "members": [
+        { "english_name": "Malihe", "farsi_name": "ملیحه", "is_head": true },
+        { "english_name": "Vahid", "farsi_name": "وحید" },
+        { "english_name": "Melika", "farsi_name": "ملیکا" },
+        { "english_name": "Atoosa", "farsi_name": "آتوسا" }
+      ]
+    },
+    {
+      "party_id": "matin-party",
+      "members": [{ "english_name": "Matin", "farsi_name": "متین", "is_head": true }]
+    },
+    {
+      "party_id": "arian-party",
+      "members": [
+        { "english_name": "Arian", "farsi_name": "آرین", "is_head": true },
+        { "english_name": "Arvin", "farsi_name": "آروین" },
+        { "english_name": "Siamak", "farsi_name": "سیامک" },
+        { "english_name": "Roya", "farsi_name": "رویا" }
+      ]
+    },
+    {
+      "party_id": "nima-party",
+      "members": [{ "english_name": "Nima", "farsi_name": "نیما", "is_head": true }]
+    },
+    {
+      "party_id": "amir-party",
+      "members": [
+        { "english_name": "Amir", "farsi_name": "امیر", "is_head": true },
+        { "english_name": null, "farsi_name": null }
+      ]
+    },
+    {
+      "party_id": "ehsan-party",
+      "members": [
+        { "english_name": "Ehsan", "farsi_name": "احسان", "is_head": true },
+        { "english_name": "Zahra", "farsi_name": "زهرا" }
+      ]
+    },
+    {
+      "party_id": "saleh-party",
+      "members": [
+        { "english_name": "Saleh", "farsi_name": "صالح", "is_head": true },
+        { "english_name": null, "farsi_name": null }
+      ]
+    },
+    {
+      "party_id": "kamyar-party",
+      "members": [
+        { "english_name": "Kamyar", "farsi_name": "کامیار", "is_head": true },
+        { "english_name": "Nadiya", "farsi_name": "نادیا" }
+      ]
+    },
+    {
+      "party_id": "alireza-party",
+      "members": [
+        { "english_name": "Alireza", "farsi_name": "علیرضا", "is_head": true },
+        { "english_name": "Hediye", "farsi_name": "هدیه" }
+      ]
+    },
+    {
+      "party_id": "arash-party",
+      "members": [
+        { "english_name": "Arash", "farsi_name": "آرش", "is_head": true },
+        { "english_name": "Parisa", "farsi_name": "پریسا" }
+      ]
+    },
+    {
+      "party_id": "mohammad-party",
+      "members": [
+        { "english_name": "Mohammad", "farsi_name": "محمد", "is_head": true },
+        { "english_name": "Narjes", "farsi_name": "نرجس" }
+      ]
+    },
+    {
+      "party_id": "khosravi-party",
+      "members": [
+        { "english_name": "Khosravi", "farsi_name": "خسروی", "is_head": true },
+        { "english_name": null, "farsi_name": null },
+        { "english_name": null, "farsi_name": null },
+        { "english_name": null, "farsi_name": null }
+      ]
+    },
+    {
+      "party_id": "hooshmand-party",
+      "members": [
+        { "english_name": "Hooshmand", "farsi_name": "هوشمند", "is_head": true },
+        { "english_name": "Roya", "farsi_name": "رویا" }
+      ]
+    }
+  ]
+}

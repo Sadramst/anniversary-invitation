@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  /* Warm anniversary palette, anchored to the Appilico brand tokens */
+  --color-ink: #100c0c;
+  --color-ink-soft: #1b1414;
+  --color-rose: #c8737a;
+  --color-rose-soft: #e8c4c0;
+  --color-gold: #c9a96e;
+  --color-gold-soft: #e6cf9d;
+  --color-cream: #f7f1e8;
+  --color-cream-dim: #cdc2b4;
+
+  --font-fa: var(--font-vazirmatn), system-ui, sans-serif;
+  --font-display: var(--font-dm-serif), Georgia, serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
+
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-slow-zoom: slow-zoom 18s ease-in-out infinite alternate;
+  --animate-shimmer: shimmer 6s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slow-zoom {
+  from { transform: scale(1.03); }
+  to   { transform: scale(1.13); }
+}
+@keyframes shimmer {
+  0%, 100% { opacity: 0.45; }
+  50%      { opacity: 0.9; }
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-ink);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+  overflow-x: hidden;
+  /* iOS in-app browsers (WhatsApp/Instagram) need explicit min-height */
+  min-height: 100svh;
+}
+
+/* Language-driven typography ------------------------------------------- */
+[dir="rtl"] { font-family: var(--font-fa); }
+[dir="ltr"] { font-family: var(--font-serif); }
+
+[dir="rtl"] .heading { font-family: var(--font-fa); font-weight: 700; }
+[dir="ltr"] .heading { font-family: var(--font-display); font-weight: 400; }
+
+/* Farsi needs a touch more line height to breathe */
+[dir="rtl"] p { line-height: 2.1; }
+[dir="ltr"] p { line-height: 1.75; }
+
+/* Logical properties so RTL mirrors layout, not just text ---------------- */
+.start-align { text-align: start; }
+.flip-x [dir="rtl"] & { transform: scaleX(-1); }
+[dir="rtl"] .mirror-icon { transform: scaleX(-1); }
+
+/* Reusable surfaces ------------------------------------------------------ */
+.gold-rule {
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    var(--color-gold) 20%,
+    var(--color-gold-soft) 50%,
+    var(--color-gold) 80%,
+    transparent
+  );
+}
+
+.glass-card {
+  background-color: color-mix(in srgb, var(--color-ink-soft) 72%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 26%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.gold-text {
+  background-image: linear-gradient(100deg, var(--color-gold) 0%, var(--color-gold-soft) 45%, var(--color-gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Focus visibility for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-gold-soft);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
