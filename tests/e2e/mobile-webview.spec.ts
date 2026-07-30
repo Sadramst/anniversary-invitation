@@ -63,8 +63,15 @@ test.describe("mobile and in-app browsers", () => {
     await page.goto(PARTY_INVITE.slug);
     await expect(page.getByTestId("guest-greeting")).toBeVisible();
 
-    // Some embedded webviews reject history.replaceState. Break it after load so
-    // the framework's own hydration is unaffected and we test only our handling.
+    // Toggle once and back to prove hydration has finished. Breaking the History
+    // API before Next's router has initialised would take down the framework
+    // rather than exercise our own handling.
+    await page.getByTestId("language-toggle").click();
+    await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
+    await page.getByTestId("language-toggle").click();
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+
+    // Some embedded webviews reject history.replaceState.
     await page.evaluate(() => {
       window.history.replaceState = () => {
         throw new DOMException("SecurityError", "SecurityError");
@@ -148,7 +155,7 @@ test.describe("accessibility", () => {
     await expect(page.getByRole("link", { name: "پرش به محتوای اصلی" })).toBeFocused();
   });
 
-  test("body text meets contrast expectations against the dark backdrop", async ({ page }) => {
+  test("body text meets contrast expectations against the paper backdrop", async ({ page }) => {
     await page.goto(PARTY_INVITE.slug);
 
     const luminance = (rgb: string) => {

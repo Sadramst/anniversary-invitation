@@ -54,10 +54,16 @@ describe("translation completeness", () => {
     }
   });
 
-  it("produces alt text in both languages", () => {
-    expect(COPY.fa.photoAlt(3)).toContain("۳".replace("۳", "3"));
-    expect(COPY.en.photoAlt(3)).toBe("Photo 3 of the couple");
-    expect(COPY.fa.photoAlt(3)).not.toBe(COPY.en.photoAlt(3));
+  it("produces the same number of pillars in both languages, none blank", () => {
+    expect(COPY.fa.pillars.length).toBe(COPY.en.pillars.length);
+    expect(COPY.fa.pillars.length).toBeGreaterThanOrEqual(3);
+
+    for (const lang of LANGS) {
+      for (const pillar of COPY[lang].pillars) {
+        expect(pillar.title.trim(), `${lang} pillar title`).not.toBe("");
+        expect(pillar.body.trim(), `${lang} pillar body`).not.toBe("");
+      }
+    }
   });
 });
 
@@ -73,12 +79,20 @@ describe("script correctness", () => {
       if (typeof value !== "string" || CROSS_SCRIPT.includes(key as keyof Copy)) continue;
       expect(PERSIAN.test(value), `fa.${key} = "${value}"`).toBe(true);
     }
+    for (const pillar of COPY.fa.pillars) {
+      expect(PERSIAN.test(pillar.title), `fa pillar "${pillar.title}"`).toBe(true);
+      expect(PERSIAN.test(pillar.body), `fa pillar "${pillar.body}"`).toBe(true);
+    }
   });
 
   it("writes English copy in Latin script", () => {
     for (const [key, value] of Object.entries(COPY.en)) {
       if (typeof value !== "string" || CROSS_SCRIPT.includes(key as keyof Copy)) continue;
       expect(LATIN.test(value), `en.${key} = "${value}"`).toBe(true);
+    }
+    for (const pillar of COPY.en.pillars) {
+      expect(LATIN.test(pillar.title), `en pillar "${pillar.title}"`).toBe(true);
+      expect(LATIN.test(pillar.body), `en pillar "${pillar.body}"`).toBe(true);
     }
   });
 

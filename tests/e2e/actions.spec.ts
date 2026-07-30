@@ -12,9 +12,13 @@ test.describe("map link", () => {
     await expect(link).toHaveAttribute("rel", /noopener/);
   });
 
-  test("shows the full address as the tappable label", async ({ page }) => {
+  test("shows the full address next to the directions button", async ({ page }) => {
     await page.goto(`${PARTY_INVITE.slug}?lang=en`);
-    await expect(page.getByTestId("map-link")).toContainText(EXPECTED_ADDRESS);
+    const link = page.getByTestId("map-link");
+    await expect(link).toBeVisible();
+    // The button itself is a short call to action; the address is printed above
+    // it so a guest can read or copy it without opening Maps.
+    await expect(page.getByText(EXPECTED_ADDRESS).first()).toBeVisible();
   });
 
   test("the map URL is identical in both languages", async ({ page }) => {

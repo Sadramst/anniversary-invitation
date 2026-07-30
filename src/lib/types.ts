@@ -19,6 +19,13 @@ export interface Couple {
   english_names: string;
   farsi_names: string;
   initials: string;
+  /** Persian initials for the monogram, e.g. "ن ص". Falls back to `initials`. */
+  initials_fa?: string;
+  /**
+   * The two names rendered separately either side of the ampersand in the hero.
+   * Falls back to the joined `*_names` string when absent.
+   */
+  name_parts?: { en: string[]; fa: string[] };
   tagline: Greeting;
 }
 
@@ -60,6 +67,8 @@ export interface InvitePageData {
   event: EventInfo;
   /** Pre-formatted on the server so the client never re-formats (no hydration drift). */
   dateLabel: Greeting;
+  /** The same date split up, for the large day numeral in the hero. */
+  dateParts: { weekday: Greeting; day: Greeting; monthYear: Greeting };
   timeLabel: Greeting;
   /** Event start/end as UTC ISO strings. */
   startUtcIso: string;

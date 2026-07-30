@@ -43,16 +43,50 @@ directly — whichever you prefer, both work.
 
 ## Changing the invitation later
 
-Everything is finished — names, photos and guest list are all real. To change
-something:
+Everything is finished — names, photo, wording and guest list are all real.
+There are only **two files** you ever need to open:
 
-- **Guest list** — edit `data/guests.data.json`, then `npm run build`. Read
-  "Guest links are permanent" below first.
-- **Couple names / venue / date** — the `couple`, `venue` and `event` objects at
-  the top of the same file.
-- **Photos** — replace files in `public/photos/` (`01.jpg` … `10.jpg`).
-  `01.jpg` is the WhatsApp share thumbnail. The hero picks a rotating set from
-  `src/lib/photos.ts`.
+### 1. `data/content.data.json` — every word on the page
+
+All the wording lives here, in two blocks: `fa` (Farsi, shown by default) and
+`en` (English, shown when the guest taps the language button). Change the text
+inside the double quotes, save, run `npm run build` — nothing else to touch.
+
+```jsonc
+"fa": {
+  "anniversaryLabel": "سالگرد ازدواج ما",     ← change this
+  "invitation": [                              ← each line is one paragraph
+    "با عشق و سپاس …",
+    "ده سال پیش …"
+  ],
+  "dressValue": "رسمی"
+}
+```
+
+Rules: keep every key that exists in `fa` also in `en`; `invitation` and
+`pillars` are lists you can add to or shorten freely. A unit test fails the
+build if the two languages fall out of sync or if Farsi text is left in English.
+
+### 2. `data/guests.data.json` — the people, place and time
+
+- **Guest list** — the `parties` array. Read "Guest links are permanent" below
+  first.
+- **Couple names** — the `couple` object. `farsi_names` is what the hero shows;
+  `name_parts.fa` is the pair split either side of the gold `&`; `initials_fa`
+  is what goes inside the wreath monogram.
+- **Venue / date / time** — the `venue` and `event` objects.
+
+### Photo
+
+There is one photograph, `public/photos/01.jpg`. It is used as the very faint
+page background and as the WhatsApp share thumbnail. Replace the file to change
+it — no code change needed.
+
+### Farsi display font
+
+The decorative Persian face used for the names and headings is set in one place,
+`--font-fa-display` in `src/app/globals.css`. To try a different one, import it
+in `src/app/layout.tsx` and change that single line.
 
 ---
 
@@ -143,6 +177,11 @@ Do this **before** sending any invitations — afterwards the old links would br
 
 - **Next.js 16** (App Router) — all 80 pages are statically generated at build
   time, so they load instantly and work even if JavaScript is blocked.
+- **Ivory, burgundy and gold** classical invitation styling: a thin gold arch,
+  hand-drawn SVG floral corners and a laurel-wreath monogram — all vector, so
+  nothing extra is downloaded and everything stays sharp on any screen.
+- The couple's photograph sits behind the whole page at 5% opacity as a paper
+  texture rather than a picture.
 - **Farsi is the default**, with a one-tap toggle to English. Language lives in
   the URL (`?lang=en`), never in storage — WhatsApp and Instagram in-app browsers
   can throw when a page touches `localStorage`.
@@ -156,10 +195,11 @@ Do this **before** sending any invitations — afterwards the old links would br
 ### Project layout
 
 ```
-data/guests.data.json      ← the only file you normally edit
+data/content.data.json     ← every word on the invitation
+data/guests.data.json      ← people, venue, date
 scripts/generate-invites   ← turns that into slugs, links and the CSV
-src/lib/                   ← dates, calendar, translations, photo list
-src/components/            ← hero, gallery, countdown, monogram, …
+src/lib/                   ← dates, calendar, translations, photo
+src/components/            ← hero, florals, monogram, countdown, …
 src/generated/invites.json ← committed on purpose, keeps links auditable
-tests/unit + tests/e2e     ← 339 tests
+tests/unit + tests/e2e     ← 297 tests
 ```

@@ -3,24 +3,24 @@ import { expect, test } from "@playwright/test";
 import { COUPLE, INDIVIDUAL_INVITE, PARTY_INVITE, SOLO_INVITE } from "./fixtures";
 
 test.describe("personalised invitation", () => {
-  test("the hero photograph is actually painted, not hidden behind the page background", async ({
+  test("the background photograph is actually painted, not hidden behind the page background", async ({
     page,
   }) => {
     await page.goto(PARTY_INVITE.slug);
 
-    const hero = page.locator("header img").first();
-    await expect(hero).toBeVisible();
+    const photo = page.getByTestId("page-photo");
+    await expect(photo).toBeVisible();
 
     // It must have really decoded, not just be a broken <img> box.
     await expect
-      .poll(() => hero.evaluate((el: HTMLImageElement) => el.naturalWidth))
+      .poll(() => photo.evaluate((el: HTMLImageElement) => el.naturalWidth))
       .toBeGreaterThan(0);
 
     // `body` carries an opaque background colour. Per the CSS painting order a
     // block-level background paints AFTER negative z-index descendants, so any
-    // negative z-index on the photo stack silently hides the photos entirely
+    // negative z-index on the photo stack silently hides the photo entirely
     // while every other check still passes. Guard the whole ancestor chain.
-    const negatives = await hero.evaluate((el) => {
+    const negatives = await photo.evaluate((el) => {
       const found: string[] = [];
       let node: HTMLElement | null = el as HTMLElement;
       while (node && node.tagName !== "BODY") {
@@ -30,9 +30,10 @@ test.describe("personalised invitation", () => {
       }
       return found;
     });
-    expect(negatives, `negative z-index would hide the hero photo:\n${negatives.join("\n")}`).toEqual(
-      [],
-    );
+    expect(
+      negatives,
+      `negative z-index would hide the background photo:\n${negatives.join("\n")}`,
+    ).toEqual([]);
   });
 
   test("a family link greets every member by name", async ({ page }) => {
@@ -91,16 +92,18 @@ test.describe("personalised invitation", () => {
     await expect(page.getByTestId("countdown")).toBeVisible();
     await expect(page.getByTestId("ics-link")).toBeVisible();
     await expect(page.getByTestId("google-calendar-link")).toBeVisible();
-    await expect(page.getByRole("heading", { name: "لحظه‌های ما" })).toBeVisible();
     await expect(page.getByRole("contentinfo")).toBeVisible();
   });
 
   test("shows the date, time and venue", async ({ page }) => {
     await page.goto(PARTY_INVITE.slug);
 
-    await expect(page.getByText("شنبه، ۵ سپتامبر ۲۰۲۶")).toBeVisible();
-    await expect(page.getByText("۱۷:۰۰ تا ۲۴:۰۰")).toBeVisible();
-    await expect(page.getByText("سالن اجتماعات سورنتو")).toBeVisible();
+    // Scoped to the details section: the hero repeats the date and time as a
+    // summary strip, so an unscoped locator would match twice.
+    const details = page.locator("#invitation");
+    await expect(details.getByText("شنبه، ۵ سپتامبر ۲۰۲۶")).toBeVisible();
+    await expect(details.getByText("۱۷:۰۰ تا ۲۴:۰۰")).toBeVisible();
+    await expect(details.getByText("سالن اجتماعات سورنتو").first()).toBeVisible();
   });
 
   test("the countdown counts down", async ({ page }) => {
@@ -119,7 +122,7 @@ test.describe("personalised invitation", () => {
 
   test("the anniversary monogram renders", async ({ page }) => {
     await page.goto(PARTY_INVITE.slug);
-    await expect(page.getByRole("img", { name: /نشان دهمین سالگرد/ }).first()).toBeVisible();
+    await expect(page.getByRole("img", { name: /نشان سالگرد/ }).first()).toBeVisible();
   });
 
   test("every generated slug returns a page, not a 404", async ({ request }) => {

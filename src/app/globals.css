@@ -1,47 +1,62 @@
 @import "tailwindcss";
 
 @theme {
-  /* Warm anniversary palette, anchored to the Appilico brand tokens */
-  --color-ink: #100c0c;
-  --color-ink-soft: #1b1414;
+  /* ---------------------------------------------------------------------
+   * Palette sampled from the reference invitation:
+   * warm ivory paper, deep burgundy ink, antique gold, dusty rose.
+   * ------------------------------------------------------------------ */
+  --color-paper: #fbf4ec;
+  --color-paper-warm: #f7ece0;
+  --color-paper-deep: #f1e3d3;
+
+  --color-wine: #7a1c33;
+  --color-wine-deep: #5e1426;
+  --color-wine-soft: #9d3b52;
+
+  --color-gold: #c2a05a;
+  --color-gold-soft: #ddc48c;
+  --color-gold-deep: #a9853f;
+
   --color-rose: #c8737a;
-  --color-rose-soft: #e8c4c0;
-  --color-gold: #c9a96e;
-  --color-gold-soft: #e6cf9d;
-  --color-cream: #f7f1e8;
-  --color-cream-dim: #cdc2b4;
+  --color-rose-soft: #e3b9b6;
+
+  --color-ink: #4a3730;
+  --color-ink-soft: #7c655c;
 
   --font-fa: var(--font-vazirmatn), system-ui, sans-serif;
+  /* Decorative Persian face, used only for the couple's names and big titles.
+     Change this ONE line to restyle every display heading at once. */
+  --font-fa-display: var(--font-lalezar), var(--font-vazirmatn), system-ui, sans-serif;
   --font-display: var(--font-dm-serif), Georgia, serif;
   --font-serif: var(--font-cormorant), Georgia, serif;
 
   --animate-fade-up: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-  --animate-slow-zoom: slow-zoom 18s ease-in-out infinite alternate;
   --animate-shimmer: shimmer 6s ease-in-out infinite;
+  --animate-float: float 9s ease-in-out infinite alternate;
 }
 
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-@keyframes slow-zoom {
-  from { transform: scale(1.03); }
-  to   { transform: scale(1.13); }
-}
 @keyframes shimmer {
-  0%, 100% { opacity: 0.45; }
-  50%      { opacity: 0.9; }
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}
+@keyframes float {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-10px); }
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--color-ink);
+  background-color: var(--color-paper);
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background-color: var(--color-ink);
-  color: var(--color-cream);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
   overflow-x: hidden;
   /* iOS in-app browsers (WhatsApp/Instagram) need explicit min-height */
   min-height: 100svh;
@@ -54,13 +69,16 @@ body {
 [dir="rtl"] .heading { font-family: var(--font-fa); font-weight: 700; }
 [dir="ltr"] .heading { font-family: var(--font-display); font-weight: 400; }
 
+/* Big decorative treatment - couple's names and section titles */
+[dir="rtl"] .display { font-family: var(--font-fa-display); font-weight: 400; line-height: 1.55; }
+[dir="ltr"] .display { font-family: var(--font-display); font-weight: 400; line-height: 1.2; }
+
 /* Farsi needs a touch more line height to breathe */
 [dir="rtl"] p { line-height: 2.1; }
 [dir="ltr"] p { line-height: 1.75; }
 
 /* Logical properties so RTL mirrors layout, not just text ---------------- */
 .start-align { text-align: start; }
-.flip-x [dir="rtl"] & { transform: scaleX(-1); }
 [dir="rtl"] .mirror-icon { transform: scaleX(-1); }
 
 /* Reusable surfaces ------------------------------------------------------ */
@@ -75,15 +93,28 @@ body {
   );
 }
 
-.glass-card {
-  background-color: color-mix(in srgb, var(--color-ink-soft) 72%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-gold) 26%, transparent);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+/* Ivory card sitting on the paper background */
+.paper-card {
+  background-color: color-mix(in srgb, var(--color-paper-warm) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 34%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Filled burgundy panel used for the event details */
+.wine-card {
+  background-color: var(--color-wine);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 40%, transparent);
+  color: var(--color-paper);
 }
 
 .gold-text {
-  background-image: linear-gradient(100deg, var(--color-gold) 0%, var(--color-gold-soft) 45%, var(--color-gold) 100%);
+  background-image: linear-gradient(
+    100deg,
+    var(--color-gold-deep) 0%,
+    var(--color-gold-soft) 45%,
+    var(--color-gold-deep) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -91,7 +122,7 @@ body {
 
 /* Focus visibility for keyboard users */
 :focus-visible {
-  outline: 2px solid var(--color-gold-soft);
+  outline: 2px solid var(--color-gold-deep);
   outline-offset: 3px;
   border-radius: 4px;
 }

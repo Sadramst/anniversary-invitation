@@ -1,0 +1,125 @@
+{
+  "_readme": [
+    "ALL WORDS ON THE INVITATION LIVE IN THIS FILE.",
+    "",
+    "Edit any value on the right-hand side of the colon, save, then run `npm run build`.",
+    "Nothing else needs to change - no code, no components.",
+    "",
+    "  fa = Farsi text (shown by default)",
+    "  en = English text (shown when the guest taps the language button)",
+    "",
+    "RULES",
+    "  1. Only change the text INSIDE the double quotes.",
+    "  2. Keep every key that exists in `fa` also in `en`, and vice versa.",
+    "  3. `invitation` is a LIST of paragraphs. Add or remove lines freely -",
+    "     each line becomes its own paragraph on the page.",
+    "  4. If you need a double quote inside text, write it as \\\" .",
+    "",
+    "The couple's names, venue, date and guest list are NOT here -",
+    "those live in `guests.data.json`."
+  ],
+
+  "fa": {
+    "dir": "rtl",
+    "htmlLang": "fa",
+
+    "greetingPrefix": "با درود",
+    "anniversaryLabel": "سالگرد ازدواج ما",
+
+    "invitation": [
+      "با عشق و سپاس از اینکه در این روز خاص در کنار ما هستید، دعوت می‌کنیم تا شادی این لحظه‌ها را با ما سهیم شوید.",
+      "ده سال پیش، دو قلب پیمان بستند که دست در دست هم، راه را تا انتها بروند.",
+      "حضور گرم شما، زیباترین هدیه‌ی این شب خواهد بود."
+    ],
+
+    "pillars": [
+      { "title": "حضور شما", "body": "بزرگ‌ترین هدیه برای ماست" },
+      { "title": "دور هم", "body": "برای جشن گرفتن عشق و همراهی" },
+      { "title": "یک سال دیگر", "body": "پر از خاطره‌های شیرین و فراموش‌نشدنی" },
+      { "title": "با عشق", "body": "هر روز با هم زیباتر از دیروز" }
+    ],
+
+    "detailsTitle": "جزئیات مراسم",
+    "whenLabel": "زمان",
+    "whereLabel": "مکان مراسم",
+    "dressLabel": "پوشش",
+    "dressValue": "رسمی",
+    "directionsHint": "مشاهده مسیر در نقشه",
+
+    "countdownTitle": "تا روز ویژه ما",
+    "countdownUnits": {
+      "days": "روز",
+      "hours": "ساعت",
+      "minutes": "دقیقه",
+      "seconds": "ثانیه"
+    },
+    "countdownToday": "امشب همان شب است!",
+    "countdownPast": "با سپاس از حضور گرم شما",
+
+    "calendarTitle": "افزودن به تقویم",
+    "calendarApple": "اپل / اوت‌لوک",
+    "calendarGoogle": "گوگل کلندر",
+
+    "footerClosing": "از اینکه در کنار ما هستید، سپاسگزاریم",
+
+    "switchTo": "English",
+    "switchLabel": "تغییر زبان به انگلیسی",
+    "skipToContent": "پرش به محتوای اصلی",
+    "scrollCue": "ادامه‌ی دعوت‌نامه",
+
+    "privateTitle": "دعوت‌نامه‌ی خصوصی",
+    "privateBody": "این دعوت‌نامه شخصی است. لطفاً از پیوندی که برایتان فرستاده شده استفاده کنید."
+  },
+
+  "en": {
+    "dir": "ltr",
+    "htmlLang": "en",
+
+    "greetingPrefix": "Dear",
+    "anniversaryLabel": "Our Wedding Anniversary",
+
+    "invitation": [
+      "With love and gratitude for being part of this special day, we invite you to share the joy of these moments with us.",
+      "Ten years ago, two hearts promised to walk the road together, hand in hand.",
+      "Your presence will be the most beautiful gift of the evening."
+    ],
+
+    "pillars": [
+      { "title": "Your Presence", "body": "is the greatest gift of all" },
+      { "title": "Together", "body": "to celebrate love and companionship" },
+      { "title": "One More Year", "body": "full of sweet, unforgettable memories" },
+      { "title": "With Love", "body": "every day lovelier than the last" }
+    ],
+
+    "detailsTitle": "Event Details",
+    "whenLabel": "When",
+    "whereLabel": "Venue",
+    "dressLabel": "Dress code",
+    "dressValue": "Formal",
+    "directionsHint": "View directions on the map",
+
+    "countdownTitle": "Until Our Special Day",
+    "countdownUnits": {
+      "days": "days",
+      "hours": "hours",
+      "minutes": "minutes",
+      "seconds": "seconds"
+    },
+    "countdownToday": "Tonight is the night!",
+    "countdownPast": "Thank you for celebrating with us",
+
+    "calendarTitle": "Add to Calendar",
+    "calendarApple": "Apple / Outlook",
+    "calendarGoogle": "Google Calendar",
+
+    "footerClosing": "Thank you for being here with us",
+
+    "switchTo": "فارسی",
+    "switchLabel": "Switch language to Farsi",
+    "skipToContent": "Skip to main content",
+    "scrollCue": "Continue to the invitation",
+
+    "privateTitle": "Private Invitation",
+    "privateBody": "This invitation is personal. Please use the link that was sent to you."
+  }
+}

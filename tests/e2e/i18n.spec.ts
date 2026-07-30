@@ -40,14 +40,18 @@ test.describe("language and direction", () => {
     await page.goto(PARTY_INVITE.slug);
     await page.getByTestId("language-toggle").click();
 
+    // Scoped to the details section: the hero repeats the date and time as a
+    // summary strip, so an unscoped locator would match twice.
+    const details = page.locator("#invitation");
     await expect(page.getByRole("heading", { name: "Event Details" })).toBeVisible();
-    await expect(page.getByText("Saturday, 5 September 2026")).toBeVisible();
-    await expect(page.getByText("5:00pm – 12:00am")).toBeVisible();
-    await expect(page.getByText("Sorrento Community Hall")).toBeVisible();
-    await expect(page.getByText("22 Padbury Circle, Sorrento WA 6020, Australia")).toBeVisible();
+    await expect(details.getByText("Saturday, 5 September 2026")).toBeVisible();
+    await expect(details.getByText("5:00pm – 12:00am")).toBeVisible();
+    await expect(details.getByText("Sorrento Community Hall").first()).toBeVisible();
+    await expect(
+      details.getByText("22 Padbury Circle, Sorrento WA 6020, Australia").first(),
+    ).toBeVisible();
     await expect(page.getByTestId("ics-link")).toContainText("Apple / Outlook");
     await expect(page.getByTestId("google-calendar-link")).toContainText("Google Calendar");
-    await expect(page.getByRole("heading", { name: "Our Moments" })).toBeVisible();
   });
 
   test("language persists in the URL, not in storage", async ({ page }) => {

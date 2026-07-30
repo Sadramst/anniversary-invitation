@@ -106,6 +106,29 @@ export function formatEventDate(event: EventInfo): Greeting {
   };
 }
 
+/**
+ * The same Gregorian date, split so the hero can set the day numeral much
+ * larger than the rest - the three-column date strip in the design.
+ * Farsi keeps Gregorian ("miladi") months, only the digits are Persian.
+ */
+export function formatEventDateParts(event: EventInfo): {
+  weekday: Greeting;
+  day: Greeting;
+  monthYear: Greeting;
+} {
+  const [y, m, d] = event.date_iso.split("-").map(Number);
+  const weekday = new Date(Date.UTC(y, m - 1, d)).getUTCDay();
+
+  return {
+    weekday: { en: EN_WEEKDAYS[weekday], fa: FA_WEEKDAYS[weekday] },
+    day: { en: String(d), fa: toFaDigits(d) },
+    monthYear: {
+      en: `${EN_MONTHS[m - 1]} ${y}`,
+      fa: `${FA_MONTHS[m - 1]} ${toFaDigits(y)}`,
+    },
+  };
+}
+
 function to12Hour(time: string): { hour: number; minute: number; meridiem: "am" | "pm" } {
   const [h, m] = time.split(":").map(Number);
   const meridiem = h >= 12 ? "pm" : "am";

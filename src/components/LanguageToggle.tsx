@@ -13,12 +13,12 @@ export function LanguageToggle() {
         aria-label={copy.switchLabel}
         data-testid="language-toggle"
         data-lang={lang}
-        className="glass-card pointer-events-auto flex items-center gap-2 rounded-full px-5 py-2.5 text-sm tracking-wide text-cream shadow-lg shadow-black/30 transition hover:border-gold/60 hover:text-gold-soft active:scale-95"
+        className="pointer-events-auto flex items-center gap-2 rounded-full border border-gold/45 bg-paper/90 px-5 py-2.5 text-sm tracking-wide text-wine shadow-sm shadow-wine/10 backdrop-blur transition hover:border-gold hover:bg-paper-warm active:scale-95"
       >
         <svg
           aria-hidden="true"
           viewBox="0 0 24 24"
-          className="h-4 w-4 shrink-0 text-gold"
+          className="h-4 w-4 shrink-0 text-gold-deep"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.6"

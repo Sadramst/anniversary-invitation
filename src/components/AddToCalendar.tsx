@@ -1,5 +1,6 @@
 "use client";
 
+import { Ornament } from "./Florals";
 import { useLanguage } from "./LanguageProvider";
 
 interface AddToCalendarProps {
@@ -38,21 +39,17 @@ export function AddToCalendar({ icsContent, googleCalendarUrl }: AddToCalendarPr
   const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsContent)}`;
 
   const buttonClass =
-    "glass-card flex flex-1 items-center justify-center gap-2.5 rounded-2xl px-5 py-4 text-sm text-cream transition hover:border-gold/60 hover:text-gold-soft active:scale-[0.98] sm:text-base";
+    "flex flex-1 items-center justify-center gap-2.5 rounded-full border border-gold/50 bg-paper-warm px-6 py-3.5 text-sm text-wine transition hover:border-gold hover:bg-paper-deep active:scale-[0.98] sm:text-base";
 
   return (
     <section aria-labelledby="calendar-title" className="text-center">
-      <h3 id="calendar-title" className="text-xs uppercase tracking-[0.28em] text-gold-soft/85">
+      <h3 id="calendar-title" className="display text-2xl text-wine sm:text-3xl">
         {copy.calendarTitle}
       </h3>
+      <Ornament className="mx-auto mt-3 h-4 w-44 opacity-90" />
 
-      <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-        <a
-          href={icsHref}
-          download="anniversary-invitation.ics"
-          data-testid="ics-link"
-          className={buttonClass}
-        >
+      <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+        <a href={icsHref} download="anniversary-invitation.ics" data-testid="ics-link" className={buttonClass}>
           <AppleIcon />
           <span>{copy.calendarApple}</span>
         </a>

@@ -24,6 +24,11 @@
     "english_names": "Niloofar & Sadra",
     "farsi_names": "نیلوفر و صدرا",
     "initials": "NS",
+    "initials_fa": "ن ص",
+    "name_parts": {
+      "en": ["Niloofar", "Sadra"],
+      "fa": ["نیلوفر", "صدرا"]
+    },
     "tagline": {
       "en": "Celebrating 10 years of togetherness",
       "fa": "جشن ۱۰ سالگی همراهی و عشق"

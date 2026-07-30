@@ -4,6 +4,7 @@ import {
   buildIcs,
   buildMapUrl,
   formatEventDate,
+  formatEventDateParts,
   formatEventTime,
   resolveEventInstants,
 } from "./event";
@@ -50,6 +51,7 @@ export function getInvitePageData(slug: string): InvitePageData | null {
     venue,
     event,
     dateLabel: formatEventDate(event),
+    dateParts: formatEventDateParts(event),
     timeLabel: formatEventTime(event),
     startUtcIso: start.toISOString(),
     endUtcIso: end.toISOString(),
