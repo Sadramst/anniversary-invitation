@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-31T04:52:25.227Z",
+  "generatedAt": "2026-07-31T08:39:30.444Z",
   "siteUrl": "https://www.appilico.com.au",
   "basePath": "/anniversary",
   "couple": {
@@ -1029,7 +1029,7 @@
       "needsName": false
     },
     {
-      "slug": "navid-party-zqqsh8",
+      "slug": "navid-party-479ynz",
       "type": "party",
       "partyId": "navid-party",
       "greeting": {
@@ -1041,7 +1041,7 @@
       "needsName": false
     },
     {
-      "slug": "navid-zq733b",
+      "slug": "navid-tjefzz",
       "type": "individual",
       "partyId": "navid-party",
       "greeting": {
@@ -1049,6 +1049,42 @@
         "fa": "نوید"
       },
       "headEn": "Navid",
+      "memberCount": 1,
+      "needsName": false
+    },
+    {
+      "slug": "elmira-party-686627",
+      "type": "party",
+      "partyId": "elmira-party",
+      "greeting": {
+        "en": "Elmira & Kian",
+        "fa": "المیرا و کیان"
+      },
+      "headEn": "Elmira",
+      "memberCount": 2,
+      "needsName": false
+    },
+    {
+      "slug": "elmira-ft3cgc",
+      "type": "individual",
+      "partyId": "elmira-party",
+      "greeting": {
+        "en": "Elmira",
+        "fa": "المیرا"
+      },
+      "headEn": "Elmira",
+      "memberCount": 1,
+      "needsName": false
+    },
+    {
+      "slug": "kian-337ppu",
+      "type": "individual",
+      "partyId": "elmira-party",
+      "greeting": {
+        "en": "Kian",
+        "fa": "کیان"
+      },
+      "headEn": "Elmira",
       "memberCount": 1,
       "needsName": false
     }
