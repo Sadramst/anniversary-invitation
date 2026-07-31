@@ -233,6 +233,12 @@
         { "english_name": "Ali", "farsi_name": "علی", "is_head": true },
         { "english_name": "Fatemeh", "farsi_name": "فاطمه" }
       ]
+    },
+    {
+      "party_id": "navid-party",
+      "members": [
+        { "english_name": "Navid", "farsi_name": "نوید", "is_head": true }
+      ]
     }
   ]
 }

@@ -1027,6 +1027,30 @@
       "headEn": "Ali",
       "memberCount": 1,
       "needsName": false
+    },
+    {
+      "slug": "navid-party-zqqsh8",
+      "type": "party",
+      "partyId": "navid-party",
+      "greeting": {
+        "en": "Navid",
+        "fa": "نوید"
+      },
+      "headEn": "Navid",
+      "memberCount": 1,
+      "needsName": false
+    },
+    {
+      "slug": "navid-zq733b",
+      "type": "individual",
+      "partyId": "navid-party",
+      "greeting": {
+        "en": "Navid",
+        "fa": "نوید"
+      },
+      "headEn": "Navid",
+      "memberCount": 1,
+      "needsName": false
     }
   ]
 }
