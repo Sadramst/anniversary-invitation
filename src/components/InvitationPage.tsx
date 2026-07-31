@@ -64,9 +64,9 @@ function InvitationBody(data: InvitePageData) {
       </a>
 
       {/*
-        The couple's portrait, washed almost all the way out so it reads as a
-        paper texture rather than a photograph. `fixed` keeps it steady while the
-        invitation scrolls over the top.
+        The couple's portrait, washed out so it reads as a paper texture rather
+        than a photograph. `fixed` keeps it steady while the invitation scrolls
+        over the top.
         Not negative z-index: `body` has an opaque background and block-level
         backgrounds paint AFTER negative-z descendants, which would hide it.
       */}
@@ -79,9 +79,9 @@ function InvitationBody(data: InvitePageData) {
           priority
           quality={70}
           sizes="100vw"
-          className="object-cover opacity-[0.05] blur-[2px]"
+          className="object-cover opacity-[0.16] grayscale-[0.2] blur-[1px]"
         />
-        <div className="absolute inset-0 bg-paper/80" />
+        <div className="absolute inset-0 bg-paper/55" />
       </div>
 
       <div className="relative z-10">

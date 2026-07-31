@@ -3,7 +3,6 @@
 import type { Couple } from "@/lib/types";
 import { Ornament } from "./Florals";
 import { useLanguage } from "./LanguageProvider";
-import { Monogram } from "./Monogram";
 
 export function Footer({ couple }: { couple: Couple }) {
   const { lang, copy } = useLanguage();
@@ -13,12 +12,6 @@ export function Footer({ couple }: { couple: Couple }) {
   return (
     <footer className="mt-24 bg-wine px-6 pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-12 text-center text-paper">
       <div className="mx-auto flex max-w-xl flex-col items-center gap-4">
-        <Monogram
-          initials={couple.initials}
-          initialsFa={couple.initials_fa}
-          lang={lang}
-          className="h-16 w-16 opacity-90 brightness-125"
-        />
         <p className="text-sm text-paper/90 sm:text-base">{copy.footerClosing}</p>
         <Ornament className="h-4 w-44 opacity-80 brightness-125" />
         <p className="display text-xl text-paper sm:text-2xl">{names}</p>

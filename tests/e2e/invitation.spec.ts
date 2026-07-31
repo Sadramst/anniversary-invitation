@@ -120,11 +120,6 @@ test.describe("personalised invitation", () => {
     await expect(countdown).toContainText("ثانیه");
   });
 
-  test("the anniversary monogram renders", async ({ page }) => {
-    await page.goto(PARTY_INVITE.slug);
-    await expect(page.getByRole("img", { name: /نشان سالگرد/ }).first()).toBeVisible();
-  });
-
   test("every generated slug returns a page, not a 404", async ({ request }) => {
     // Spot-check across the whole guest list.
     const { INVITES } = await import("./fixtures");

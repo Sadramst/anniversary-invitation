@@ -3,7 +3,6 @@
 import type { Couple, Greeting, Invite } from "@/lib/types";
 import { FloralCorner, Ornament } from "./Florals";
 import { useLanguage } from "./LanguageProvider";
-import { Monogram } from "./Monogram";
 
 interface HeroProps {
   invite: Invite;
@@ -65,13 +64,6 @@ export function Hero({ invite, couple, dateParts, timeLabel }: HeroProps) {
       />
 
       <div className="animate-fade-up relative z-10 flex w-full max-w-xl flex-col items-center gap-6">
-        <Monogram
-          initials={couple.initials}
-          initialsFa={couple.initials_fa}
-          lang={lang}
-          className="h-24 w-24 sm:h-28 sm:w-28"
-        />
-
         {/* Couple's names ------------------------------------------------ */}
         {/*
           The `&` is decorative typography; without an explicit label the

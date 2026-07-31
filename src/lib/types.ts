@@ -19,7 +19,7 @@ export interface Couple {
   english_names: string;
   farsi_names: string;
   initials: string;
-  /** Persian initials for the monogram, e.g. "ن ص". Falls back to `initials`. */
+  /** Persian initials, e.g. "ن ص". Falls back to `initials`. Currently unused by the UI. */
   initials_fa?: string;
   /**
    * The two names rendered separately either side of the ampersand in the hero.

@@ -72,15 +72,14 @@ build if the two languages fall out of sync or if Farsi text is left in English.
 - **Guest list** — the `parties` array. Read "Guest links are permanent" below
   first.
 - **Couple names** — the `couple` object. `farsi_names` is what the hero shows;
-  `name_parts.fa` is the pair split either side of the gold `&`; `initials_fa`
-  is what goes inside the wreath monogram.
+  `name_parts.fa` is the pair split either side of the gold `&`.
 - **Venue / date / time** — the `venue` and `event` objects.
 
 ### Photo
 
-There is one photograph, `public/photos/01.jpg`. It is used as the very faint
-page background and as the WhatsApp share thumbnail. Replace the file to change
-it — no code change needed.
+There is one photograph, `public/photos/01.jpg`. It is used as the faint page
+background and as the WhatsApp share thumbnail. Replace the file to change it —
+no code change needed.
 
 ### Farsi display font
 
@@ -177,11 +176,11 @@ Do this **before** sending any invitations — afterwards the old links would br
 
 - **Next.js 16** (App Router) — all 80 pages are statically generated at build
   time, so they load instantly and work even if JavaScript is blocked.
-- **Ivory, burgundy and gold** classical invitation styling: a thin gold arch,
-  hand-drawn SVG floral corners and a laurel-wreath monogram — all vector, so
-  nothing extra is downloaded and everything stays sharp on any screen.
-- The couple's photograph sits behind the whole page at 5% opacity as a paper
-  texture rather than a picture.
+- **Ivory, burgundy and gold** classical invitation styling: a thin gold arch
+  and hand-drawn SVG floral corners — all vector, so nothing extra is
+  downloaded and everything stays sharp on any screen.
+- The couple's photograph sits behind the whole page at low opacity as a soft
+  paper texture rather than a picture.
 - **Farsi is the default**, with a one-tap toggle to English. Language lives in
   the URL (`?lang=en`), never in storage — WhatsApp and Instagram in-app browsers
   can throw when a page touches `localStorage`.
@@ -199,7 +198,7 @@ data/content.data.json     ← every word on the invitation
 data/guests.data.json      ← people, venue, date
 scripts/generate-invites   ← turns that into slugs, links and the CSV
 src/lib/                   ← dates, calendar, translations, photo
-src/components/            ← hero, florals, monogram, countdown, …
+src/components/            ← hero, florals, countdown, …
 src/generated/invites.json ← committed on purpose, keeps links auditable
-tests/unit + tests/e2e     ← 297 tests
+tests/unit + tests/e2e     ← 299 tests
 ```
