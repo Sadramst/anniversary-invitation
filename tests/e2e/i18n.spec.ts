@@ -28,12 +28,12 @@ test.describe("language and direction", () => {
 
   test("switching language re-renders the invitation body, not just the labels", async ({ page }) => {
     await page.goto(PARTY_INVITE.slug);
-    await expect(page.getByText(/ده سال پیش، دو قلب پیمان بستند/)).toBeVisible();
+    await expect(page.getByText(/همراهی گرم شما بهترین هدیه/)).toBeVisible();
 
     await page.getByTestId("language-toggle").click();
 
-    await expect(page.getByText(/Ten years ago, two hearts promised/)).toBeVisible();
-    await expect(page.getByText(/ده سال پیش، دو قلب پیمان بستند/)).toHaveCount(0);
+    await expect(page.getByText(/Your presence will be the most beautiful gift/)).toBeVisible();
+    await expect(page.getByText(/همراهی گرم شما بهترین هدیه/)).toHaveCount(0);
   });
 
   test("all event details are translated too", async ({ page }) => {
@@ -44,7 +44,7 @@ test.describe("language and direction", () => {
     // summary strip, so an unscoped locator would match twice.
     const details = page.locator("#invitation");
     await expect(page.getByRole("heading", { name: "Event Details" })).toBeVisible();
-    await expect(details.getByText("Saturday, 5 September 2026")).toBeVisible();
+    await expect(details.getByText("Saturday, 12 September 2026")).toBeVisible();
     await expect(details.getByText("5:00pm – 12:00am")).toBeVisible();
     await expect(details.getByText("Sorrento Community Hall").first()).toBeVisible();
     await expect(

@@ -88,7 +88,7 @@ test.describe("personalised invitation", () => {
     await expect(page.getByRole("heading", { name: COUPLE.farsi_names })).toBeVisible();
     await expect(page.getByTestId("guest-greeting")).toBeVisible();
 
-    await expect(page.getByRole("heading", { name: "جزئیات مراسم" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "چگونگی برگزاری" })).toBeVisible();
     await expect(page.getByTestId("countdown")).toBeVisible();
     await expect(page.getByTestId("ics-link")).toBeVisible();
     await expect(page.getByTestId("google-calendar-link")).toBeVisible();
@@ -101,9 +101,9 @@ test.describe("personalised invitation", () => {
     // Scoped to the details section: the hero repeats the date and time as a
     // summary strip, so an unscoped locator would match twice.
     const details = page.locator("#invitation");
-    await expect(details.getByText("شنبه، ۵ سپتامبر ۲۰۲۶")).toBeVisible();
+    await expect(details.getByText("شنبه، ۱۲ سپتامبر ۲۰۲۶")).toBeVisible();
     await expect(details.getByText("۱۷:۰۰ تا ۲۴:۰۰")).toBeVisible();
-    await expect(details.getByText("سالن اجتماعات سورنتو").first()).toBeVisible();
+    await expect(details.getByText("سالن گردهمایی سورنتو").first()).toBeVisible();
   });
 
   test("the countdown counts down", async ({ page }) => {

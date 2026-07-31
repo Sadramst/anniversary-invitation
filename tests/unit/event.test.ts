@@ -14,7 +14,7 @@ import {
 import type { EventInfo, Venue } from "@/lib/types";
 
 const EVENT: EventInfo = {
-  date_iso: "2026-09-05",
+  date_iso: "2026-09-12",
   start_time: "17:00",
   end_time: "00:00",
   timezone: "Australia/Perth",
@@ -35,20 +35,20 @@ const VENUE: Venue = {
 
 describe("timezone handling", () => {
   it("converts Perth wall-clock time to the correct UTC instant (UTC+8)", () => {
-    expect(zonedToUtc(2026, 9, 5, 17, 0, "Australia/Perth").toISOString()).toBe(
-      "2026-09-05T09:00:00.000Z",
+    expect(zonedToUtc(2026, 9, 12, 17, 0, "Australia/Perth").toISOString()).toBe(
+      "2026-09-12T09:00:00.000Z",
     );
   });
 
   it("resolves the event start correctly", () => {
     const { start } = resolveEventInstants(EVENT);
-    expect(start.toISOString()).toBe("2026-09-05T09:00:00.000Z");
+    expect(start.toISOString()).toBe("2026-09-12T09:00:00.000Z");
   });
 
   it("rolls a midnight end time over to the next day instead of going backwards", () => {
     const { start, end } = resolveEventInstants(EVENT);
     expect(end.getTime()).toBeGreaterThan(start.getTime());
-    expect(end.toISOString()).toBe("2026-09-05T16:00:00.000Z"); // 6 Sep 00:00 Perth
+    expect(end.toISOString()).toBe("2026-09-12T16:00:00.000Z"); // 13 Sep 00:00 Perth
   });
 
   it("makes the party exactly 7 hours long", () => {
@@ -59,11 +59,11 @@ describe("timezone handling", () => {
 
 describe("date and time formatting", () => {
   it("renders the English date exactly as specified in the brief", () => {
-    expect(formatEventDate(EVENT).en).toBe("Saturday, 5 September 2026");
+    expect(formatEventDate(EVENT).en).toBe("Saturday, 12 September 2026");
   });
 
   it("renders the Farsi date with Persian digits and weekday", () => {
-    expect(formatEventDate(EVENT).fa).toBe("شنبه، ۵ سپتامبر ۲۰۲۶");
+    expect(formatEventDate(EVENT).fa).toBe("شنبه، ۱۲ سپتامبر ۲۰۲۶");
   });
 
   it("renders the English time range as 5:00pm – 12:00am", () => {
@@ -120,7 +120,7 @@ describe("Google Calendar link", () => {
 
   it("carries the correct UTC date range", () => {
     expect(decodeURIComponent(new URL(url).searchParams.get("dates")!)).toBe(
-      "20260905T090000Z/20260905T160000Z",
+      "20260912T090000Z/20260912T160000Z",
     );
   });
 
@@ -134,7 +134,7 @@ describe("Google Calendar link", () => {
 
 describe("calendar stamps", () => {
   it("formats as a compact UTC stamp", () => {
-    expect(toCalendarStamp(new Date("2026-09-05T09:00:00.000Z"))).toBe("20260905T090000Z");
+    expect(toCalendarStamp(new Date("2026-09-12T09:00:00.000Z"))).toBe("20260912T090000Z");
   });
 });
 
@@ -164,8 +164,8 @@ describe(".ics file", () => {
   });
 
   it("carries the correct start and end instants", () => {
-    expect(ics).toContain("DTSTART:20260905T090000Z");
-    expect(ics).toContain("DTEND:20260905T160000Z");
+    expect(ics).toContain("DTSTART:20260912T090000Z");
+    expect(ics).toContain("DTEND:20260912T160000Z");
   });
 
   it("escapes commas in the location, per spec", () => {

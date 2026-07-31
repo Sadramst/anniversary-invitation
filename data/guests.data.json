@@ -36,7 +36,7 @@
   },
 
   "venue": {
-    "name": { "en": "Sorrento Community Hall", "fa": "سالن اجتماعات سورنتو" },
+    "name": { "en": "Sorrento Community Hall", "fa": "سالن گردهمایی سورنتو" },
     "address": {
       "street": "22 Padbury Circle",
       "suburb": "Sorrento",
@@ -49,7 +49,7 @@
   },
 
   "event": {
-    "date_iso": "2026-09-05",
+    "date_iso": "2026-09-12",
     "start_time": "17:00",
     "end_time": "00:00",
     "timezone": "Australia/Perth"
@@ -225,6 +225,13 @@
       "members": [
         { "english_name": "Parham", "farsi_name": "پرهام", "is_head": true },
         { "english_name": "Parisa", "farsi_name": "پریسا" }
+      ]
+    },
+    {
+      "party_id": "ali-party",
+      "members": [
+        { "english_name": "Ali", "farsi_name": "علی", "is_head": true },
+        { "english_name": "Fatemeh", "farsi_name": "فاطمه" }
       ]
     }
   ]

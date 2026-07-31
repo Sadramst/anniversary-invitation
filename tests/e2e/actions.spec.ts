@@ -40,7 +40,7 @@ test.describe("add to calendar", () => {
 
     const params = new URL(href).searchParams;
     expect(params.get("action")).toBe("TEMPLATE");
-    expect(params.get("dates")).toBe("20260905T090000Z/20260905T160000Z");
+    expect(params.get("dates")).toBe("20260912T090000Z/20260912T160000Z");
     expect(params.get("text")).toContain("10th Anniversary");
     expect(params.get("location")).toBe(EXPECTED_ADDRESS);
     expect(params.get("details")).toContain("Sorrento Community Hall");
@@ -55,8 +55,8 @@ test.describe("add to calendar", () => {
     const ics = decodeURIComponent(href.replace("data:text/calendar;charset=utf-8,", ""));
     expect(ics).toContain("BEGIN:VCALENDAR");
     expect(ics).toContain("BEGIN:VEVENT");
-    expect(ics).toContain("DTSTART:20260905T090000Z"); // 5 Sep 2026, 5:00pm Perth
-    expect(ics).toContain("DTEND:20260905T160000Z"); // 6 Sep 2026, 12:00am Perth
+    expect(ics).toContain("DTSTART:20260912T090000Z"); // 12 Sep 2026, 5:00pm Perth
+    expect(ics).toContain("DTEND:20260912T160000Z"); // 13 Sep 2026, 12:00am Perth
     expect(ics).toContain("SUMMARY:");
     expect(ics).toContain("LOCATION:22 Padbury Circle\\, Sorrento WA 6020\\, Australia");
     expect(ics.trimEnd().endsWith("END:VCALENDAR")).toBe(true);

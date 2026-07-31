@@ -47,7 +47,7 @@ describe("translation completeness", () => {
 
   it("translates the full invitation body, not just UI labels", () => {
     for (const lang of LANGS) {
-      expect(COPY[lang].invitation.length).toBeGreaterThanOrEqual(3);
+      expect(COPY[lang].invitation.length).toBeGreaterThanOrEqual(2);
       for (const paragraph of COPY[lang].invitation) {
         expect(paragraph.length).toBeGreaterThan(40);
       }

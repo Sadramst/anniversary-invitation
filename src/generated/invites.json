@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T07:04:46.968Z",
+  "generatedAt": "2026-07-31T04:35:59.400Z",
   "siteUrl": "https://www.appilico.com.au",
   "basePath": "/anniversary",
   "couple": {
@@ -25,7 +25,7 @@
   "venue": {
     "name": {
       "en": "Sorrento Community Hall",
-      "fa": "سالن اجتماعات سورنتو"
+      "fa": "سالن گردهمایی سورنتو"
     },
     "address": {
       "street": "22 Padbury Circle",
@@ -38,7 +38,7 @@
     }
   },
   "event": {
-    "date_iso": "2026-09-05",
+    "date_iso": "2026-09-12",
     "start_time": "17:00",
     "end_time": "00:00",
     "timezone": "Australia/Perth"
@@ -989,6 +989,42 @@
         "fa": "پریسا"
       },
       "headEn": "Parham",
+      "memberCount": 1,
+      "needsName": false
+    },
+    {
+      "slug": "ali-party-qmhhnh",
+      "type": "party",
+      "partyId": "ali-party",
+      "greeting": {
+        "en": "Ali & Fatemeh",
+        "fa": "علی و فاطمه"
+      },
+      "headEn": "Ali",
+      "memberCount": 2,
+      "needsName": false
+    },
+    {
+      "slug": "ali-xgnkjq",
+      "type": "individual",
+      "partyId": "ali-party",
+      "greeting": {
+        "en": "Ali",
+        "fa": "علی"
+      },
+      "headEn": "Ali",
+      "memberCount": 1,
+      "needsName": false
+    },
+    {
+      "slug": "fatemeh-6hwhb8",
+      "type": "individual",
+      "partyId": "ali-party",
+      "greeting": {
+        "en": "Fatemeh",
+        "fa": "فاطمه"
+      },
+      "headEn": "Ali",
       "memberCount": 1,
       "needsName": false
     }
