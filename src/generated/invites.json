@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-31T08:39:30.444Z",
+  "generatedAt": "2026-08-01T10:42:24.718Z",
   "siteUrl": "https://www.appilico.com.au",
   "basePath": "/anniversary",
   "couple": {
@@ -38,7 +38,7 @@
     }
   },
   "event": {
-    "date_iso": "2026-09-12",
+    "date_iso": "2026-09-05",
     "start_time": "17:00",
     "end_time": "00:00",
     "timezone": "Australia/Perth"

@@ -101,7 +101,7 @@ test.describe("personalised invitation", () => {
     // Scoped to the details section: the hero repeats the date and time as a
     // summary strip, so an unscoped locator would match twice.
     const details = page.locator("#invitation");
-    await expect(details.getByText("شنبه، ۱۲ سپتامبر ۲۰۲۶")).toBeVisible();
+    await expect(details.getByText("شنبه، ۵ سپتامبر ۲۰۲۶")).toBeVisible();
     await expect(details.getByText("۱۷:۰۰ تا ۲۴:۰۰")).toBeVisible();
     await expect(details.getByText("سالن گردهمایی سورنتو").first()).toBeVisible();
   });

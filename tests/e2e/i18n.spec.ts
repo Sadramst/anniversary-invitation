@@ -44,7 +44,7 @@ test.describe("language and direction", () => {
     // summary strip, so an unscoped locator would match twice.
     const details = page.locator("#invitation");
     await expect(page.getByRole("heading", { name: "Event Details" })).toBeVisible();
-    await expect(details.getByText("Saturday, 12 September 2026")).toBeVisible();
+    await expect(details.getByText("Saturday, 5 September 2026")).toBeVisible();
     await expect(details.getByText("5:00pm – 12:00am")).toBeVisible();
     await expect(details.getByText("Sorrento Community Hall").first()).toBeVisible();
     await expect(
