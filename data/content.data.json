@@ -45,6 +45,13 @@
     "dressValue": "رسمی",
     "directionsHint": "دیدن مسیر در نقشه",
 
+    "navHome": "خانه",
+    "navDetails": "جزئیات مراسم",
+    "navLocation": "مکان",
+    "navLabel": "فهرست بخش‌های دعوت‌نامه",
+    "gregorianLabel": "به میلادی",
+    "mapLabel": "نقشه‌ی محل برگزاری جشن",
+
     "countdownTitle": "تا روز ویژه ما",
     "countdownUnits": {
       "days": "روز",
@@ -96,6 +103,13 @@
     "dressLabel": "Dress code",
     "dressValue": "Formal",
     "directionsHint": "View directions on the map",
+
+    "navHome": "Home",
+    "navDetails": "Event Details",
+    "navLocation": "Location",
+    "navLabel": "Invitation sections",
+    "gregorianLabel": "Gregorian",
+    "mapLabel": "Map of the celebration venue",
 
     "countdownTitle": "Until Our Special Day",
     "countdownUnits": {

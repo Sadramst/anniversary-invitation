@@ -1,5 +1,7 @@
 export type Lang = "fa" | "en";
 
+export type { JalaliParts } from "./event";
+
 export interface Greeting {
   en: string;
   fa: string;
@@ -69,6 +71,8 @@ export interface InvitePageData {
   dateLabel: Greeting;
   /** The same date split up, for the large day numeral in the hero. */
   dateParts: { weekday: Greeting; day: Greeting; monthYear: Greeting };
+  /** The same date on the Persian (Solar Hijri) calendar, shown in Farsi mode. */
+  jalali: JalaliParts;
   timeLabel: Greeting;
   /** Event start/end as UTC ISO strings. */
   startUtcIso: string;

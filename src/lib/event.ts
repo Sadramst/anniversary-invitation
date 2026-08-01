@@ -1,3 +1,5 @@
+import { toJalaali } from "jalaali-js";
+
 import type { EventInfo, Greeting, Venue } from "./types";
 
 /* ------------------------------------------------------------- time zones */
@@ -126,6 +128,54 @@ export function formatEventDateParts(event: EventInfo): {
       en: `${EN_MONTHS[m - 1]} ${y}`,
       fa: `${FA_MONTHS[m - 1]} ${toFaDigits(y)}`,
     },
+  };
+}
+
+/* ------------------------------------------------- Jalali (Shamsi) calendar */
+
+/** Solar Hijri month names, in order, starting at Farvardin. */
+const JALALI_MONTHS = [
+  "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور",
+  "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند",
+];
+
+export interface JalaliParts {
+  /** Day of the month in Persian digits, e.g. "۲۱". */
+  day: string;
+  /** Month name only, e.g. "شهریور". */
+  month: string;
+  /** Year in Persian digits, e.g. "۱۴۰۵". */
+  year: string;
+  /** "شهریور ۱۴۰۵" */
+  monthYear: string;
+  /** "شنبه، ۲۱ شهریور ۱۴۰۵" */
+  full: string;
+  /** Raw numeric parts, for tests and any caller that needs the real numbers. */
+  numeric: { jy: number; jm: number; jd: number };
+}
+
+/**
+ * The event date on the Persian (Solar Hijri) calendar, which is what Farsi
+ * speakers actually read a date in. The conversion itself comes from
+ * `jalaali-js` rather than hand-rolled arithmetic, because the leap-year rule
+ * is a 33-year cycle that is easy to get subtly wrong.
+ */
+export function formatEventDateJalali(event: EventInfo): JalaliParts {
+  const [y, m, d] = event.date_iso.split("-").map(Number);
+  const { jy, jm, jd } = toJalaali(y, m, d);
+  const weekday = new Date(Date.UTC(y, m - 1, d)).getUTCDay();
+
+  const day = toFaDigits(jd);
+  const month = JALALI_MONTHS[jm - 1];
+  const year = toFaDigits(jy);
+
+  return {
+    day,
+    month,
+    year,
+    monthYear: `${month} ${year}`,
+    full: `${FA_WEEKDAYS[weekday]}، ${day} ${month} ${year}`,
+    numeric: { jy, jm, jd },
   };
 }
 

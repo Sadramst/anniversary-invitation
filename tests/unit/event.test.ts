@@ -5,6 +5,7 @@ import {
   buildIcs,
   buildMapUrl,
   formatEventDate,
+  formatEventDateJalali,
   formatEventTime,
   resolveEventInstants,
   toCalendarStamp,
@@ -82,6 +83,43 @@ describe("date and time formatting", () => {
   it("is deterministic, so server and client HTML always match", () => {
     expect(formatEventDate(EVENT)).toEqual(formatEventDate(EVENT));
     expect(formatEventTime(EVENT)).toEqual(formatEventTime(EVENT));
+  });
+});
+
+describe("Jalali (Shamsi) calendar", () => {
+  it("converts the real event date, 12 September 2026, to 21 Shahrivar 1405", () => {
+    expect(formatEventDateJalali(EVENT).numeric).toEqual({ jy: 1405, jm: 6, jd: 21 });
+  });
+
+  it("renders the Jalali date in Persian digits with the Persian month name", () => {
+    const jalali = formatEventDateJalali(EVENT);
+    expect(jalali.day).toBe("۲۱");
+    expect(jalali.month).toBe("شهریور");
+    expect(jalali.year).toBe("۱۴۰۵");
+    expect(jalali.monthYear).toBe("شهریور ۱۴۰۵");
+  });
+
+  it("names the same weekday as the Gregorian formatter", () => {
+    // 12 Sep 2026 is a Saturday in both calendars - they only differ in the date.
+    expect(formatEventDateJalali(EVENT).full).toBe("شنبه، ۲۱ شهریور ۱۴۰۵");
+    expect(formatEventDate(EVENT).fa).toContain("شنبه");
+  });
+
+  it("handles a leap-year boundary, where naive arithmetic drifts", () => {
+    // 1403 is a Jalali leap year, so it has a 30th of Esfand.
+    const leap = { ...EVENT, date_iso: "2025-03-20" };
+    expect(formatEventDateJalali(leap).numeric).toEqual({ jy: 1403, jm: 12, jd: 30 });
+  });
+
+  it("rolls over to Farvardin on Nowruz", () => {
+    const nowruz = { ...EVENT, date_iso: "2026-03-21" };
+    const jalali = formatEventDateJalali(nowruz);
+    expect(jalali.numeric).toEqual({ jy: 1405, jm: 1, jd: 1 });
+    expect(jalali.month).toBe("فروردین");
+  });
+
+  it("is deterministic, so server and client HTML always match", () => {
+    expect(formatEventDateJalali(EVENT)).toEqual(formatEventDateJalali(EVENT));
   });
 });
 
