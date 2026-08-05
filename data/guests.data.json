@@ -241,6 +241,12 @@
       ]
     },
     {
+      "party_id": "simin-party",
+      "members": [
+        { "english_name": "Simin", "farsi_name": "سیمین", "is_head": true }
+      ]
+    },
+    {
       "party_id": "elmira-party",
       "members": [
         { "english_name": "Elmira", "farsi_name": "\u0627\u0644\u0645\u06cc\u0631\u0627", "is_head": true },

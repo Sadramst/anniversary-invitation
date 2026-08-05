@@ -1053,6 +1053,30 @@
       "needsName": false
     },
     {
+      "slug": "simin-party-479ynzz",
+      "type": "party",
+      "partyId": "simin-party",
+      "greeting": {
+        "en": "Simin",
+        "fa": "سیمین"
+      },
+      "headEn": "Simin",
+      "memberCount": 1,
+      "needsName": false
+    },
+    {
+      "slug": "simin-8d7fghz",
+      "type": "individual",
+      "partyId": "simin-party",
+      "greeting": {
+        "en": "Simin",
+        "fa": "سیمین"
+      },
+      "headEn": "Simin",
+      "memberCount": 1,
+      "needsName": false
+    },
+    {
       "slug": "elmira-party-686627",
       "type": "party",
       "partyId": "elmira-party",
