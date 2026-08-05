@@ -58,6 +58,7 @@ test.describe("add to calendar", () => {
     expect(ics).toContain("DTSTART:20260905T090000Z"); // 5 Sep 2026, 5:00pm Perth
     expect(ics).toContain("DTEND:20260905T160000Z"); // 6 Sep 00:00 Perth
     expect(ics).toContain("SUMMARY:");
+    expect(ics).toContain("SUMMARY:");
     expect(ics).toContain("LOCATION:22 Padbury Circle\\, Sorrento WA 6020\\, Australia");
     expect(ics.trimEnd().endsWith("END:VCALENDAR")).toBe(true);
   });
